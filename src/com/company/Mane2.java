@@ -15,21 +15,33 @@ public class Mane2 {
             System.out.println("Good bye");}*/
 
 
-        String k = args[0];
+        /*String k = args[0];
         String g = args[1];
 
-        if (k.equals(("Hello")) && g.equals("Class")){
+        if (k.equals(("Hello")) && g.equals("Class")){*/
 
                                                          /* Делаем сравнивание два раза
                                                           ( если К=Hello и G=Class тогда печатаем , если  не равно...)*/
-            System.out.println("Success");
+           /* System.out.println("Success");
 
         }
 
         else {
             System.out.println("Good bye");
+        }*/
+
+        int a =20;
+
+        while (a<25){
+
+            a=a+1;
+            System.out.println("a+1");
         }
+        System.out.println("V");
+
 
         }
 
-    }
+        }
+
+
