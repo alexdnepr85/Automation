@@ -28,7 +28,7 @@ public class Mane2 {
 
         else {
             System.out.println("Good bye");
-        }*/
+        }
 
         int a =20;
 
@@ -39,8 +39,48 @@ public class Mane2 {
         }
         System.out.println("V");
 
+        boolean b;
+        boolean c;
 
+
+        if (b = 100 - 20 == 70) {
+            System.out.println("MOlodec");
         }
+        if (c=100-20== 80) {
+            System.out.println("Pravilno");}
+int a = 50;
+
+        while (a<55){
+            a= a-1;
+            System.out.println("цикл пройден");
+            break;
+        }
+        int a = 20;
+        if (a > a) {
+            System.out.println("a greater a");
+        } else if (a < a) {
+            System.out.println("a less a");
+        } else {
+            System.out.println("other");
+        }
+        int a =20;
+        int b = a+5;
+
+        if (false) { System.out.println("hi there"); }
+
+        while (a > 0) {
+            System.out.println("Recycle " + b);
+            a = a - 10; }
+        boolean pereryv = true;
+        boolean luchshe = false;
+        if (!luchshe && pereryv) {
+            System.out.println("Перерьіву не бьіть.");
+        } if (!(luchshe && pereryv)) {
+            System.out.println("Перерьіву бьіть.");
+        }*/
+
+
+    }
 
         }
 
