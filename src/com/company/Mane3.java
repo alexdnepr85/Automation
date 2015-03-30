@@ -11,5 +11,8 @@ public class Mane3 {
 
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         WebDriver p = new ChromeDriver();
+        p.manage().window().maximize();
+        p.get("http://google.com");
+        p.quit();
 
 }}
