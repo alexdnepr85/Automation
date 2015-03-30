@@ -61,19 +61,22 @@ public class Main {
 
         System.out.println(g   + "\\n"+ "fds");*/
 
+/*{
+    public int height;
+    public int width;
+    public boolean isOpened;
+    public  Door(int h){
+        height = h;
+        isOpened = false;
+    }
+
+
+    }
+*/
 
 
 
 
-     Door k = new Door(100);
-     int d = k.height;
-     k.isOpened=false;
-
-     if (k.isOpened) {
-      System.out.println("Open");
-     }
-     else {
-      System.out.println("Close");
      }
 
 
@@ -81,4 +84,4 @@ public class Main {
 
 
     }
-}
+
