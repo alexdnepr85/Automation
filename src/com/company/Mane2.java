@@ -77,11 +77,29 @@ int a = 50;
             System.out.println("Перерьіву не бьіть.");
         } if (!(luchshe && pereryv)) {
             System.out.println("Перерьіву бьіть.");
-        }*/
-
-
-    }
-
         }
+
+int [] p = {1,2,3,4,5,6};
+        int q = p[0];
+        int w = p[1] + p [2] + p[3] + p[4] + p[5] + p[0];
+        if (w == 3) {
+            System.out.println(" Угадал");}
+
+            while (w == 25) {
+                w = q + 1 ;
+                System.out.println("q+1");
+            }*/
+
+
+        for (int j = 0; j<5; j=j+1){
+            System.out.println(j);
+        }
+
+
+        }}
+
+
+
+
 
 
