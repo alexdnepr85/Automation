@@ -88,15 +88,15 @@ int [] p = {1,2,3,4,5,6};
             while (w == 25) {
                 w = q + 1 ;
                 System.out.println("q+1");
-            }*/
+            }
 
 
         for (int j = 0; j<5; j=j+1){
-            System.out.println(j);
+            System.out.println(j);*/
         }
 
 
-        }}
+        }
 
 
 

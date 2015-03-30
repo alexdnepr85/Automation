@@ -65,6 +65,19 @@ public class Main {
 
 
 
+     Door k = new Door(100);
+     int d = k.height;
+     k.isOpened=false;
+
+     if (k.isOpened) {
+      System.out.println("Open");
+     }
+     else {
+      System.out.println("Close");
+     }
+
+
+
 
 
     }
