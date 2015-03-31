@@ -6,29 +6,30 @@ import com.thoughtworks.selenium.webdriven.commands.Open;
  * Created by Никита on 30/03/15.
  */
 public class Door {
-    public  int heigt;
-    public  boolean Open;
-    public Door (int h) {
-        heigt = h;
+    public  int height;
+    public  int width;
+    public  boolean open;
+    public Door (int h,int w) {
+        this.height = h;
+        this.width = w;
+        this.open = false;
     }
 
     public static void main(String[] args) {
-        Door k = new Door(100);
-        Door g = new Door(200);
-        boolean Open = false;
-        int p = k.heigt;
-        int q = g.heigt;
-        k.Open = true;
-        if (p <100 ){
-            System.out.println("BLYATTTTT");}
+        Door k = new Door(100,250);
+        Door g = new Door(200,350);
+        k.open = true;
+        if (k.height <100 ){
+            System.out.println("1");}
         else {
-            System.out.println("zzzz");}
-        if (Open != false) {
-            System.out.println("Idi Nahyi ");
+            System.out.println("2");}
+
+        if (k.open != false) {
+            System.out.println("3");
 
         }
         else {
-            System.out.println("$etko");}
+            System.out.println("4");}
         }
     }
 
