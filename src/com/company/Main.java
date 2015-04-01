@@ -1,8 +1,8 @@
 package com.company;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
-
-/* public class Main {
+/*
+ public class Main {
 
     public static void main(String[] args) {
        int x = 256 + 3180;
@@ -59,20 +59,20 @@ import com.sun.org.apache.xpath.internal.SourceTree;
         g = z + 105 != 120;
 
 
-        System.out.println(g   + "\\n"+ "fds");*/
+        System.out.println(g   + "\\n"+ "fds");
 
-/*{
+{
     public int height;
     public int width;
     public boolean isOpened;
     public  Door(int h){
         height = h;
         isOpened = false;
-    }
+    }*/
 
 
-    }
-*/
+
+
 
 
 
