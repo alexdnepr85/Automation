@@ -38,8 +38,14 @@ public class Mane3 {
 
         }
 
+        s.clear();
+        s.sendKeys("kinopoisk");
+        p.findElement(By.name("btnG")).click();
 
-        p.quit();
+
+
+
+      //  p.quit();
 
 
 }}
