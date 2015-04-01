@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Никита on 30/03/15.
  */
-/*public class Door {
+public class Door {
     public  int height;
     public  int width;
     public  boolean open;
@@ -40,19 +40,8 @@ package com.company;
 
     }
     }}
-*/
 
-public static void main(String[] args) {
-        TestClass ProDoor1 = new TestClass(2000, 1000, false, false);
-        String DoorInfo1 = "Door_1 Info :";
 
-        System.out.println(DoorInfo1 + "\n" + ProDoor1);
 
-        TestClass ProDoor2 = new TestClass(3000, 2000, true, true);
-        String DoorInfo2 = "Door2 Info :";
-
-        System.out.println(DoorInfo2 + "\n" + ProDoor2);
-
-        }
 
 

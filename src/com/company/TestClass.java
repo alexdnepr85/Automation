@@ -10,38 +10,38 @@ package com.company;
 public class TestClass {
     public  int height;
     public  int width ;
-    public boolean opened;
-    public boolean locked;
+    public boolean isOpened;
+    public boolean isLocked;
 
 
+        public  String toString(){
 
-
-    public  String toString(){
-
-    String s = "Size: " + height + "x" + width + "mm" + "\n"+
-               "Opened: " + "\n" +
-               "Locked: ";
+    String s = "Size: " + height + " x " + width + " mm" + "\n"+
+               "Opened: " + isOpened  +
+                "\n"  + "Locked: " + isLocked;
         return s;
+        }
 
-
-
-    }
-
-    public  TestClass (int h,int w, boolean opened,boolean locked){
+    public  TestClass (int h,int w, boolean isOpened,boolean isLocked){
         this.height = h;
         this.width = w;
-        this.opened = true;
-        this.locked = false;
-
+        this.isOpened = isOpened;
+        this.isLocked = isLocked;
 
     }
 
     public static void main(String[] args) {
+
         TestClass ProDoor1 = new TestClass(2000, 1000, false, false);
-        System.out.println(DoorInfo1 + "\n" + ProDoor1);
+        String ProDoor = ProDoor1.toString();
+
+
+        System.out.println("Door1 info: " + "\n" + ProDoor1 + "\n");
+
+
 
         TestClass ProDoor2 = new TestClass(3000, 2000, true, true);
-        String DoorInfo2 = "Door2 Info :";
+        String ProDoor2info = ProDoor2.toString();
 
-        System.out.println(DoorInfo2 + "\n" + ProDoor2);}}
+        System.out.println("DoorInfo2: " + "\n" + ProDoor2info);}}
 
