@@ -17,10 +17,8 @@ public class Door {
 
         Door door1 = new Door(100,250,true);
         Door door2 = new Door(200,350,false);
-        door1.open = true;
-        door2.open = false;
 
-        if (door1.height == 100 && door1.height < 260){
+        if (door1.height == 100 && door1.width < 260){
 
             System.out.println("Все ок");}
 
@@ -39,6 +37,7 @@ public class Door {
     while (door2.width<355) {
         door2.width = door2.width + 1;
         System.out.println("Цикл +1"+ " = " + door2.width);
+
     }
     }}
 

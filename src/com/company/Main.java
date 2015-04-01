@@ -2,10 +2,10 @@ package com.company;
 
 import com.sun.org.apache.xpath.internal.SourceTree;
 
-public class Main {
+/* public class Main {
 
     public static void main(String[] args) {
-       /* int x = 256 + 3180;
+       int x = 256 + 3180;
         int y = 180/30;
 
 	    System.out.println("Symma of 256+3180 = "+  x);
@@ -77,11 +77,11 @@ public class Main {
 
 
 
-     }
 
 
 
 
 
-    }
+
+
 
