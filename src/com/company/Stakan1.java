@@ -6,7 +6,7 @@ package com.company;
 public class Stakan1 {
 
     public String name;
-    public static String Material = "bumaga";   // переменные класса , поля класса
+    public static String Material = "Бумага";   // переменные класса , поля класса
     public static  int Vysota = 10;
     public  int procentZapolnennost;
 
@@ -28,30 +28,60 @@ public class Stakan1 {
 
     }
 
-    public  void  Vilit () {
+    public int Vilit() {
         int v =  procentZapolnennost;
-        procentZapolnennost = 0;
 
+        procentZapolnennost = 0;                      // metod
+        return v ;
     }
 
 
 
 
-    public static void main(String[] args) {
-        Stakan1 s = new Stakan1("Supper");               // объект
-        Stakan1 k = new Stakan1("Bigger");
-        System.out.println("S: " + s.name);
-        System.out.println("K: " + k.name);
-        s.Nalit(30);
-        s.Nalit(20);
-        System.out.println("Stakan: " + Stakan1.Material);
-        System.out.println("Stakan: " + Stakan1.Vysota);
-        System.out.println("s: " + s.procentZapolnennost());
-        //s.Nalit(30);
+    public static void main(String[] args) {                // объект
+
+        Stakan1 stakan1 = new Stakan1("Supper");             //Стакан 1
+        Stakan1 stakan2 = new Stakan1("Bigger");          // Стакан 2
+
+        String name1 = "Имя 1го стакана : ";
+        String name2 = "Имя 2го стакана : ";
+        String material = "Материал стаканов : ";
+        String visota = "Высота стаканов: ";
+        String  zap1  = "Стакан 1 заполнен на : ";
+        String  zap2  = "Стакан 2 заполнен на : ";
+        String Pzap1 = "После наполнения 1й стакан заполнен на : ";
+        String Pzap2 = "После наполнения 2й стакан заполнен на : ";
+        String vil1 = "После выливания 1й стакан  заполнен на : ";
+        String vil2 = "После выливания 2й стакан  заполнен на : ";
+
+
+        System.out.println(name1 + stakan1.name);
+        System.out.println(name2 + stakan2.name + "\n");
+        System.out.println(material + Stakan1.Material);                         //Выводы
+        System.out.println(visota + Stakan1.Vysota + " см" + "\n");
+        System.out.println( zap1+ stakan1.procentZapolnennost() + " %");
+        System.out.println( zap2+ stakan2.procentZapolnennost() + " %" + "\n");
+
+        stakan1.Nalit(30);             // Налили
+        stakan2.Nalit(15);
+
+        System.out.println(Pzap1 + stakan1.procentZapolnennost()+ " %" );                   //Выводы
+        System.out.println(Pzap2 + stakan2.procentZapolnennost()+ " %" + "\n");
+
+        stakan1.Vilit();
+        stakan2.Vilit();                //Вылили
+
+        System.out.println("Вылили" + "\n");
+        System.out.println( vil1 + stakan1.procentZapolnennost + " %");                   // Вывод
+        System.out.println( vil2 + stakan2.procentZapolnennost + " %" + "\n");
+
+
+
+
+
     }
 
 
 
 
 }
-
