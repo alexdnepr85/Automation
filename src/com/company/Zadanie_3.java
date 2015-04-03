@@ -7,13 +7,13 @@ package com.company;
 
 
 
-public class TestClass {
+public class Zadanie_3 {
     public  int height;           // свойства
     public  int width ;           // свойства
     public boolean isOpened;      // свойства
     public boolean isLocked;      // свойства
 
-    public  TestClass (int h,int w, boolean isOpened,boolean isLocked){    // конструктор
+    public Zadanie_3(int h, int w, boolean isOpened, boolean isLocked){    // конструктор
         this.height = h;                                                   // конструктор
         this.width = w;                                                   // конструктор
         this.isOpened = isOpened;                                        // конструктор
@@ -34,7 +34,7 @@ public class TestClass {
 
     public static void main(String[] args) {
 
-        TestClass ProDoor1 = new TestClass(2000, 1000, false, true);
+        Zadanie_3 ProDoor1 = new Zadanie_3(2000, 1000, false, true);
         String ProDoor = ProDoor1.toString();                               // программа
 
 
@@ -42,7 +42,7 @@ public class TestClass {
 
 
 
-        TestClass ProDoor2 = new TestClass(3000, 2000, true, false);
+        Zadanie_3 ProDoor2 = new Zadanie_3(3000, 2000, true, false);
         String ProDoor2info = ProDoor2.toString();
 
         System.out.println("DoorInfo2: " + "\n" + ProDoor2info);}}

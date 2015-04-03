@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Никита on 01/04/15.
  */
-public class ManeLists {
+public class Lesson_3 {
     public static void main(String[] args) {
         String[] s = {"Hello", "Class", "."};
         List<String> f = new ArrayList<String>();

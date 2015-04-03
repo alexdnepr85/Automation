@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Никита on 30/03/15.
  */
-public class Mane3 {
+public class Lesson_4 {
     public static void main(String[] args) throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");

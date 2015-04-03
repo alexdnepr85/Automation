@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Никита on 25/03/15.
  */
-public class Mane2 {
+public class Lesson_2 {
     public static void main(String[] args) {
 
         /*String r = args[0];

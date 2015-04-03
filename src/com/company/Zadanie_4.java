@@ -3,7 +3,7 @@ package com.company;
 /**
  * Created by Никита on 02/04/15.
  */
-public class Stakan1 {
+public class Zadanie_4 {
 
     public String name;
     public static String Material = "Бумага";   // переменные класса , поля класса
@@ -12,7 +12,7 @@ public class Stakan1 {
 
 
 
-    public Stakan1(String name ) {            // конструктор класса
+    public Zadanie_4(String name) {            // конструктор класса
          this.name = name;
     }
 
@@ -40,8 +40,8 @@ public class Stakan1 {
 
     public static void main(String[] args) {                // объект
 
-        Stakan1 stakan1 = new Stakan1("Supper");             //Стакан 1
-        Stakan1 stakan2 = new Stakan1("Bigger");          // Стакан 2
+        Zadanie_4 stakan1 = new Zadanie_4("Supper");             //Стакан 1
+        Zadanie_4 stakan2 = new Zadanie_4("Bigger");          // Стакан 2
 
         String name1 = "Имя 1го стакана : ";
         String name2 = "Имя 2го стакана : ";
@@ -57,8 +57,8 @@ public class Stakan1 {
 
         System.out.println(name1 + stakan1.name);
         System.out.println(name2 + stakan2.name + "\n");
-        System.out.println(material + Stakan1.Material);                         //Выводы
-        System.out.println(visota + Stakan1.Vysota + " см" + "\n");
+        System.out.println(material + Zadanie_4.Material);                         //Выводы
+        System.out.println(visota + Zadanie_4.Vysota + " см" + "\n");
         System.out.println( zap1+ stakan1.procentZapolnennost() + " %");
         System.out.println( zap2+ stakan2.procentZapolnennost() + " %" + "\n");
 
