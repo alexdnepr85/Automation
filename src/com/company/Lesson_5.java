@@ -27,13 +27,6 @@ public class Lesson_5 {
         GetPass(p, "sdgdfgdf", "fsdfd@gfyfguvhu.fer");
         GetPass(p, "r76tr7t7", "fsdfdr6r56r56@fre.fer");
 
-
-        WebElement s = p.findElement(By.name("master"));
-        s.sendKeys("123456789");
-        s = p.findElement(By.name("site"));
-        s.sendKeys(Keys.ENTER);
-        String K = p.findElement(By.name("password")).getAttribute("value");
-        System.out.println(K);
     }
 
     public  static String GetPass (WebDriver j, String j1, String j2){
@@ -42,11 +35,11 @@ public class Lesson_5 {
         String G = j.findElement(By.name("password")).getAttribute("value");
         System.out.println(G);
 
-        return G ;
+        return G ;}
 
 
 
-}}
+}
 
 
 
