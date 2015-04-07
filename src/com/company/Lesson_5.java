@@ -29,7 +29,7 @@ public class Lesson_5 {
 
     }
 
-    public  static String GetPass (WebDriver j, String j1, String j2){
+    public  static String GetPass (WebDriver j, String j1, String j2){    //metod
         j.findElement(By.name("master")).sendKeys(j1);
         j.findElement(By.name("site")).sendKeys(j2,Keys.ENTER);
         String G = j.findElement(By.name("password")).getAttribute("value");
