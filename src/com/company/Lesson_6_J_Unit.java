@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
@@ -28,13 +29,15 @@ public class Lesson_6_J_Unit {
         System.out.println(t);
         dr.quit();}
 
-    @Before    // Будет выполняться перед каждой функцией , можно поставить в начало .
+    @   Before    // Будет выполняться перед каждой функцией , можно поставить в начало .
 
     public  void  pered_testom(){
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
         dr.get(" http://angel.net/~nic/passwd.current.html");
+        WebElement masterField = dr.findElement(By.name("master"));
+        WebElement siteField = dr.findElement(By.name("site"));
 
     }
 
@@ -88,17 +91,18 @@ public class Lesson_6_J_Unit {
 
     public  void Test5 () {
         t = "Test5";
-        String y = "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg" +
-                    "ggggggggggggggggggggggggggggggggggggggggggggggggg" +
-                     "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggghgsdjngknsdvs" +
-                      "dvsdvsdvsdvsdvsdvsdvsd";
-        String y1 = "cssssssssssssssssacvasdcdnhjvefbjdjbvcdnmbvhaefjnbvjhefabfebefbgrbdfbf" +
-                     "dbfdvdfvdfvfdhuiggerngjerngnerjignerjkgnjkergergergergergergergergergergergergregre";
+        WebElement masterField = dr.findElement(By.name("master"));
+        WebElement siteField = dr.findElement(By.name("site"));
 
-        dr.findElement(By.name("master")).sendKeys(y);
-        dr.findElement(By.name("site")).sendKeys(y1, Keys.ENTER);
+        int i = 0;
+        for (i=0; i<200; i++ ) {
+            masterField.sendKeys("1");
+            siteField.sendKeys("1");
+        }
+        siteField.sendKeys(Keys.ENTER);
+
         String G = dr.findElement(By.name("password")).getAttribute("value");
-        String expectedresult2 = "csof9AAQSzhjv@1a";
+        String expectedresult2 = "aR8ztwNBbSqe5@1a";
         Assert.assertEquals("Тест 5 упал ", expectedresult2, G);
     }
 
