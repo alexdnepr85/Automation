@@ -25,14 +25,11 @@ public class Zadanie_7 {
 
     WebDriver dr;
 
-
-
     @After
-
     public void clean () {
         dr.quit();}
 
-@Before
+    @Before
     public  void  pered(){
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();

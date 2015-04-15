@@ -29,104 +29,134 @@ public class Lesson_6_J_Unit {
         System.out.println(t);
         dr.quit();}
 
-    @   Before    // Будет выполняться перед каждой функцией , можно поставить в начало .
+    @   Before
 
     public  void  pered_testom(){
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
-        dr.get(" http://angel.net/~nic/passwd.current.html");
-        WebElement masterField = dr.findElement(By.name("master"));
-        WebElement siteField = dr.findElement(By.name("site"));
-
+        dr.get("http://oxogamestudio.com/passwd.current3.htm");
+       // dr.get(" http://angel.net/~nic/passwd.current.html");
     }
 
 
     public  WebDriver dr;
 
-    @Test
 
-    public void  Test1( ){
-        t = "Test1";
-        Assert.fail();               //   завалить тест
+
+    public  void findMaster(String s) {
+        dr.findElement(By.name("master")).sendKeys(s);
     }
 
-    @Test                       // необходимо всегда писать @Test  чтобы запустить функции по одиночке и выполнить
-                                //   действия по отдельности друг от друга
-    public  void Test2() {
-        t = "Test2";
-        int a =10 ;
-        int b = 5;
-        int expectedResult =15;
-        Assert.assertEquals(" Тащи  ! " ,expectedResult, a + b);
-                                                                    // класс Assert , в котором есть функции .
+
+    public  void findSite(String s1) {
+        dr.findElement(By.name("site")).sendKeys(s1);
     }
 
-    @Test
-
-    public  void  Test3(){
-        t = "Test3";
-        String j1 = "123456";
-        String j2 = "gmail.com";
-        dr.findElement(By.name("master")).sendKeys(j1);
-        dr.findElement(By.name("site")).sendKeys(j2, Keys.ENTER);
-        String G = dr.findElement(By.name("password")).getAttribute("value");
-        String expectedresult2 = "DhpO4o+PKM3qA@1a";
-        Assert.assertEquals("Тест 3 упал " ,expectedresult2,G );
-
-    }
-
-    @Test
-
-    public  void Test4 (){
-        t = "Test4";
-        dr.findElement(By.name("master")).sendKeys();
+    public void  pressEnter () {
         dr.findElement(By.name("site")).sendKeys(Keys.ENTER);
-        String G = dr.findElement(By.name("password")).getAttribute("value");
-        String expectedresult2 = "BaefBs8/Z/cm2@1a";
-        Assert.assertEquals("Тест 4 упал " ,expectedresult2,G );
+    }
+
+    public String  pole() {
+        String pole1 = dr.findElement(By.name("master")).getAttribute("value");
+        return pole1;
+    }
+
+    public String pole1 () {
+        String pole2 = dr.findElement(By.name("site")).getAttribute("value");
+        return pole2;
+    }
+
+
+    public  String Vozvrat () {
+        String pass = dr.findElement(By.name("password")).getAttribute("value");
+        return pass;
+    }
+
+    public  boolean isAnable() {
+        boolean k = dr.findElement(By.name("master")).isEnabled();
+        return k;
+
+    }
+
+
+    @Test
+
+    public  void  Test1(){
+        t = "Test1";
+        findMaster("123456");
+        findSite("gmail.com");
+        pressEnter();
+        String expectedresult2 = "DhpO4o+PKM3qA@1a";
+        Assert.assertEquals("Тест 1 упал " ,expectedresult2,Vozvrat() );
+
     }
 
     @Test
 
-    public  void Test5 () {
-        t = "Test5";
-        WebElement masterField = dr.findElement(By.name("master"));
-        WebElement siteField = dr.findElement(By.name("site"));
+    public  void Test2 (){
+        t = "Test2";
+        findMaster("");
+        findSite("");
+        pressEnter();
+        String expectedresult2 = "BaefBs8/Z/cm2@1a";
+        Assert.assertEquals("Тест 2 упал " ,expectedresult2,Vozvrat() );
+    }
 
+    @Test
+
+    public  void Test3 () {
+        t = "Test3";
         int i = 0;
         for (i=0; i<200; i++ ) {
-            masterField.sendKeys("1");
-            siteField.sendKeys("1");
+            findMaster("1");
+            findSite("1");
         }
-        siteField.sendKeys(Keys.ENTER);
-
-        String G = dr.findElement(By.name("password")).getAttribute("value");
+        pressEnter();
         String expectedresult2 = "aR8ztwNBbSqe5@1a";
-        Assert.assertEquals("Тест 5 упал ", expectedresult2, G);
+        Assert.assertEquals("Тест 3 упал ", expectedresult2, Vozvrat());
     }
 
 
     @Test
-    public  void Test6 (){
-        t = "Test6";
-        String y1 = "!@#$%^&*((((()";
-        String y2 = "!@#$%^&*())))))))";
-        dr.findElement(By.name("master")).sendKeys(y1);
-        dr.findElement(By.name("site")).sendKeys(y2,Keys.ENTER);
-        String G = dr.findElement(By.name("password")).getAttribute("value");
+    public  void Test4 (){
+        t = "Test4";
+        findMaster("!@#$%^&*((((()");
+        findSite("!@#$%^&*())))))))");
+        pressEnter();
         String expectedresult2 = "fwfy9LM437BKx@1a";
-        Assert.assertEquals("Тест 6 упал " , expectedresult2,G );
+        Assert.assertEquals("Тест 4 упал " , expectedresult2,Vozvrat() );
     }
 
     @Test
-    public  void Test7 (){
-        t = "Test7";
+    public  void Test5 (){
+        t = "Test5";
         String G = dr.findElements(By.tagName("input")).get(2).getAttribute("value");
         String G1    = "Generate";
-        Assert.assertEquals("Тест 7 упал " , G,G1 );
+        Assert.assertEquals("Тест 5 упал " , G,G1 );
+    }
+
+
+    @Test
+    public void  Test6 () {
+        String g = "123456";
+        String g1 = "gmail.com";
+        findMaster(g);
+        findSite(g1);
+        pressEnter();
+        Assert.assertEquals(g,pole());
+        Assert.assertEquals(g1,pole1());
+    }
+
+    @Test
+    public void  Test7() {
+        findMaster("12345");
+        findSite("gmail.com");
+        pressEnter();
+        boolean k = true ;
+        Assert.assertEquals(k,isAnable());
+    }
 
 
 
-
-}}
+}
