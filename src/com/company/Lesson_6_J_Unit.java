@@ -35,7 +35,7 @@ public class Lesson_6_J_Unit {
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
-        dr.get("http://oxogamestudio.com/passwd.current3.htm");
+        dr.get("http://oxogamestudio.com/passwd.current4.htm");
        // dr.get(" http://angel.net/~nic/passwd.current.html");
     }
 
@@ -73,13 +73,24 @@ public class Lesson_6_J_Unit {
         return pass;
     }
 
-    public  boolean isAnable() {
+    public  boolean isAnableMaster() {
         boolean k = dr.findElement(By.name("master")).isEnabled();
         return k;
 
     }
 
+    public  boolean isAnableSite() {
+        boolean b = dr.findElement(By.name("site")).isEnabled();
+        return b;
 
+    }
+     public  boolean isAnablePass() {
+         boolean t = dr.findElement(By.name("password")).isEnabled();
+         return  t;
+     }
+
+
+/*
     @Test
 
     public  void  Test1(){
@@ -146,7 +157,7 @@ public class Lesson_6_J_Unit {
         pressEnter();
         Assert.assertEquals(g,pole());
         Assert.assertEquals(g1,pole1());
-    }
+    }*/
 
     @Test
     public void  Test7() {
@@ -154,7 +165,25 @@ public class Lesson_6_J_Unit {
         findSite("gmail.com");
         pressEnter();
         boolean k = true ;
-        Assert.assertEquals(k,isAnable());
+        Assert.assertEquals(k,isAnableMaster());
+    }
+
+    @Test
+    public void  Test8() {
+        findMaster("12345");
+        findSite("gmail.com");
+        pressEnter();
+        boolean k = true ;
+        Assert.assertEquals(k,isAnableSite());
+    }
+
+    @Test
+    public void  Test9() {
+        findMaster("12345");
+        findSite("gmail.com");
+        pressEnter();
+        boolean k = true ;
+        Assert.assertEquals(k,isAnablePass());
     }
 
 
