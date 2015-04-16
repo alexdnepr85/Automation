@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 
 /**
  * Created by Никита on 08/04/15.
@@ -21,22 +23,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 @RunWith(JUnit4.class)
 
 public class Lesson_6_J_Unit {
-    String t ;
+    List<WebElement> td;
 
     @After
-
     public void clean () {
-        System.out.println(t);
         dr.quit();}
 
     @   Before
-
     public  void  pered_testom(){
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
-        dr.get("http://oxogamestudio.com/passwd.current4.htm");
-       // dr.get(" http://angel.net/~nic/passwd.current.html");
+        dr.get("http://oxogamestudio.com/passwd.current5.htm");
+        td = dr.findElements(By.tagName("td"));
+
     }
 
 
@@ -57,41 +57,61 @@ public class Lesson_6_J_Unit {
         dr.findElement(By.name("site")).sendKeys(Keys.ENTER);
     }
 
-    public String  pole() {
+    public String  contentMaster() {
         String pole1 = dr.findElement(By.name("master")).getAttribute("value");
         return pole1;
     }
 
-    public String pole1 () {
+    public String contentSite () {
         String pole2 = dr.findElement(By.name("site")).getAttribute("value");
         return pole2;
     }
 
 
-    public  String Vozvrat () {
+    public  String contentParol () {
         String pass = dr.findElement(By.name("password")).getAttribute("value");
         return pass;
     }
 
-    public  boolean isAnableMaster() {
+    public  boolean isEnableMaster() {
         boolean k = dr.findElement(By.name("master")).isEnabled();
         return k;
 
     }
 
-    public  boolean isAnableSite() {
+    public  boolean isEnableSite() {
         boolean b = dr.findElement(By.name("site")).isEnabled();
         return b;
 
     }
-     public  boolean isAnablePass() {
+     public  boolean isEnablePass() {
          boolean t = dr.findElement(By.name("password")).isEnabled();
          return  t;
      }
 
+    public String getMasterLabel(){
 
-/*
-    @Test
+        String s = td.get(0).getText();
+        return s;
+
+    }
+
+    public String getSiteLabel(){
+
+        String s = td.get(2).getText();
+        return s;
+    }
+
+    public String getPasswordLabel(){
+
+        String s = td.get(5).getText();
+        return s;
+    }
+
+
+
+
+   /* @Test
 
     public  void  Test1(){
         t = "Test1";
@@ -99,9 +119,11 @@ public class Lesson_6_J_Unit {
         findSite("gmail.com");
         pressEnter();
         String expectedresult2 = "DhpO4o+PKM3qA@1a";
-        Assert.assertEquals("Тест 1 упал " ,expectedresult2,Vozvrat() );
+        Assert.assertEquals("Тест 1 упал " ,expectedresult2,contentParol() );
 
     }
+
+
 
     @Test
 
@@ -111,7 +133,7 @@ public class Lesson_6_J_Unit {
         findSite("");
         pressEnter();
         String expectedresult2 = "BaefBs8/Z/cm2@1a";
-        Assert.assertEquals("Тест 2 упал " ,expectedresult2,Vozvrat() );
+        Assert.assertEquals("Тест 2 упал " ,expectedresult2,contentParol() );
     }
 
     @Test
@@ -125,7 +147,7 @@ public class Lesson_6_J_Unit {
         }
         pressEnter();
         String expectedresult2 = "aR8ztwNBbSqe5@1a";
-        Assert.assertEquals("Тест 3 упал ", expectedresult2, Vozvrat());
+        Assert.assertEquals("Тест 3 упал ", expectedresult2, contentParol());
     }
 
 
@@ -136,7 +158,7 @@ public class Lesson_6_J_Unit {
         findSite("!@#$%^&*())))))))");
         pressEnter();
         String expectedresult2 = "fwfy9LM437BKx@1a";
-        Assert.assertEquals("Тест 4 упал " , expectedresult2,Vozvrat() );
+        Assert.assertEquals("Тест 4 упал " , expectedresult2,contentParol());
     }
 
     @Test
@@ -155,9 +177,9 @@ public class Lesson_6_J_Unit {
         findMaster(g);
         findSite(g1);
         pressEnter();
-        Assert.assertEquals(g,pole());
-        Assert.assertEquals(g1,pole1());
-    }*/
+        Assert.assertEquals(g,contentMaster());
+        Assert.assertEquals(g1,contentSite());
+    }
 
     @Test
     public void  Test7() {
@@ -165,7 +187,7 @@ public class Lesson_6_J_Unit {
         findSite("gmail.com");
         pressEnter();
         boolean k = true ;
-        Assert.assertEquals(k,isAnableMaster());
+        Assert.assertEquals(k,isEnableMaster());
     }
 
     @Test
@@ -174,7 +196,7 @@ public class Lesson_6_J_Unit {
         findSite("gmail.com");
         pressEnter();
         boolean k = true ;
-        Assert.assertEquals(k,isAnableSite());
+        Assert.assertEquals(k,isEnableSite());
     }
 
     @Test
@@ -183,8 +205,24 @@ public class Lesson_6_J_Unit {
         findSite("gmail.com");
         pressEnter();
         boolean k = true ;
-        Assert.assertEquals(k,isAnablePass());
+        Assert.assertEquals(k,isEnablePass());
+    }*/
+
+    @Test
+    public  void  Test10() {
+        String a = "Your master password";
+        String b = "Site name";
+        String c = "Generated password";
+        Assert.assertEquals(getMasterLabel(),a);
+        Assert.assertEquals(getSiteLabel(),b);
+        Assert.assertEquals(getPasswordLabel(),c);
     }
+
+
+
+
+
+
 
 
 
