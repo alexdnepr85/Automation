@@ -34,7 +34,7 @@ public class Lesson_6_J_Unit {
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
-        dr.get("http://oxogamestudio.com/passwd.current5.htm");
+        dr.get("http://oxogamestudio.com/passwd.current7.htm");
         td = dr.findElements(By.tagName("td"));
 
     }
@@ -45,47 +45,47 @@ public class Lesson_6_J_Unit {
 
 
     public  void findMaster(String s) {
-        dr.findElement(By.xpath("//input[@name = 'master']")).sendKeys(s);
+        dr.findElement(By.xpath("//input[@type = 'password']")).sendKeys(s);  // master field
     }
 
 
     public  void findSite(String s1) {
-        dr.findElement(By.xpath("//input[@name = 'site']")).sendKeys(s1);
+        dr.findElement(By.xpath("(//tr/td/input)[2]")).sendKeys(s1);   //site
     }
 
     public void  pressEnter () {
-        dr.findElement(By.xpath("//input[@name = 'site']")).sendKeys(Keys.ENTER);
+        dr.findElement(By.xpath("(//tr/td/input)[2]")).sendKeys(Keys.ENTER);
     }
 
     public String  contentMaster() {
-        String pole1 = dr.findElement(By.xpath("//input[@name = 'master']")).getAttribute("value");
+        String pole1 = dr.findElement(By.xpath("//input[@type = 'password']")).getAttribute("value"); // master field
         return pole1;
     }
 
     public String contentSite () {
-        String pole2 = dr.findElement(By.xpath("//input[@name = 'site']")).getAttribute("value");
+        String pole2 = dr.findElement(By.xpath("(//tr/td/input)[2]")).getAttribute("value"); //password
         return pole2;
     }
 
 
     public  String contentParol () {
-        String pass = dr.findElement(By.name("//input[@name = 'password']")).getAttribute("value");
+        String pass = dr.findElement(By.xpath("(//tr/td/input)[4]")).getAttribute("value");//password
         return pass;
     }
 
     public  boolean isEnableMaster() {
-        boolean k = dr.findElement(By.xpath("//input[@name = 'master']")).isEnabled();
+        boolean k = dr.findElement(By.xpath("//input[@type = 'password']")).isEnabled(); // master field
         return k;
 
     }
 
     public  boolean isEnableSite() {
-        boolean b = dr.findElement(By.xpath("//input[@name = 'site']")).isEnabled();
+        boolean b = dr.findElement(By.xpath("(//tr/td/input)[4]")).isEnabled();
         return b;
 
     }
      public  boolean isEnablePass() {
-         boolean t = dr.findElement(By.xpath("//input[@name = 'password']")).isEnabled();
+         boolean t = dr.findElement(By.xpath("//input[@type = 'password']")).isEnabled();// master field
          return  t;
      }
 
@@ -110,11 +110,11 @@ public class Lesson_6_J_Unit {
 
 
 
-
-   /* @Test
+/*
+    @Test
 
     public  void  Test1(){
-        t = "Test1";
+
         findMaster("123456");
         findSite("gmail.com");
         pressEnter();
@@ -128,7 +128,7 @@ public class Lesson_6_J_Unit {
     @Test
 
     public  void Test2 (){
-        t = "Test2";
+
         findMaster("");
         findSite("");
         pressEnter();
@@ -139,7 +139,7 @@ public class Lesson_6_J_Unit {
     @Test
 
     public  void Test3 () {
-        t = "Test3";
+
         int i = 0;
         for (i=0; i<200; i++ ) {
             findMaster("1");
@@ -153,7 +153,7 @@ public class Lesson_6_J_Unit {
 
     @Test
     public  void Test4 (){
-        t = "Test4";
+
         findMaster("!@#$%^&*((((()");
         findSite("!@#$%^&*())))))))");
         pressEnter();
@@ -163,7 +163,7 @@ public class Lesson_6_J_Unit {
 
     @Test
     public  void Test5 (){
-        t = "Test5";
+
         String G = dr.findElements(By.tagName("input")).get(2).getAttribute("value");
         String G1    = "Generate";
         Assert.assertEquals("Тест 5 упал " , G,G1 );
@@ -206,7 +206,7 @@ public class Lesson_6_J_Unit {
         pressEnter();
         boolean k = true ;
         Assert.assertEquals(k,isEnablePass());
-    }*/
+    }
 
     @Test
     public  void  Test10() {
@@ -216,7 +216,20 @@ public class Lesson_6_J_Unit {
         Assert.assertEquals(getMasterLabel(),a);
         Assert.assertEquals(getSiteLabel(),b);
         Assert.assertEquals(getPasswordLabel(),c);
-    }
+    }*/
+
+
+    @Test
+    public  void  Test11() throws InterruptedException {
+        findMaster("11111");
+        findSite("11111");
+
+        pressEnter();
+        Thread.sleep(5000);
+        String expectedresult2 = "fbGEc7Ssq/i7a@1a";
+        Assert.assertEquals( expectedresult2,contentParol());
+
+    }  // сделать цикл , если не нашло , ищет заново , и понойвой
 
 
 
