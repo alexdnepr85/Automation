@@ -45,47 +45,47 @@ public class Lesson_6_J_Unit {
 
 
     public  void findMaster(String s) {
-        dr.findElement(By.name("master")).sendKeys(s);
+        dr.findElement(By.xpath("//input[@name = 'master']")).sendKeys(s);
     }
 
 
     public  void findSite(String s1) {
-        dr.findElement(By.name("site")).sendKeys(s1);
+        dr.findElement(By.xpath("//input[@name = 'site']")).sendKeys(s1);
     }
 
     public void  pressEnter () {
-        dr.findElement(By.name("site")).sendKeys(Keys.ENTER);
+        dr.findElement(By.xpath("//input[@name = 'site']")).sendKeys(Keys.ENTER);
     }
 
     public String  contentMaster() {
-        String pole1 = dr.findElement(By.name("master")).getAttribute("value");
+        String pole1 = dr.findElement(By.xpath("//input[@name = 'master']")).getAttribute("value");
         return pole1;
     }
 
     public String contentSite () {
-        String pole2 = dr.findElement(By.name("site")).getAttribute("value");
+        String pole2 = dr.findElement(By.xpath("//input[@name = 'site']")).getAttribute("value");
         return pole2;
     }
 
 
     public  String contentParol () {
-        String pass = dr.findElement(By.name("password")).getAttribute("value");
+        String pass = dr.findElement(By.name("//input[@name = 'password']")).getAttribute("value");
         return pass;
     }
 
     public  boolean isEnableMaster() {
-        boolean k = dr.findElement(By.name("master")).isEnabled();
+        boolean k = dr.findElement(By.xpath("//input[@name = 'master']")).isEnabled();
         return k;
 
     }
 
     public  boolean isEnableSite() {
-        boolean b = dr.findElement(By.name("site")).isEnabled();
+        boolean b = dr.findElement(By.xpath("//input[@name = 'site']")).isEnabled();
         return b;
 
     }
      public  boolean isEnablePass() {
-         boolean t = dr.findElement(By.name("password")).isEnabled();
+         boolean t = dr.findElement(By.xpath("//input[@name = 'password']")).isEnabled();
          return  t;
      }
 
