@@ -88,6 +88,10 @@ public class Lesson_6_J_Unit {
          boolean t = dr.findElement(By.xpath("//input[@type = 'password']")).isEnabled();// master field
          return  t;
      }
+    public String poiskGenerate () {
+        String k = dr.findElement(By.xpath("//input[@type= 'submit']")).getAttribute("value");
+        return k;                                          // Generate
+    }
 
     public String getMasterLabel(){
 
@@ -216,27 +220,34 @@ public class Lesson_6_J_Unit {
         Assert.assertEquals(getMasterLabel(),a);
         Assert.assertEquals(getSiteLabel(),b);
         Assert.assertEquals(getPasswordLabel(),c);
-    }*/
+    }
 
 
     @Test
     public  void  Test11() throws InterruptedException {
         findMaster("11111");
         findSite("11111");
-
         pressEnter();
-        Thread.sleep(5000);
+        while (contentParol() != "") {
+             Thread.sleep(1000);
+            return;
+         }
         String expectedresult2 = "fbGEc7Ssq/i7a@1a";
         Assert.assertEquals( expectedresult2,contentParol());
 
-    }  // сделать цикл , если не нашло , ищет заново , и понойвой
+    }*/
 
-
-
-
-
-
-
-
+    @Test
+    public  void  Test12 () throws InterruptedException {
+        findMaster("22222");
+        findSite("22222");
+        while (poiskGenerate()!= null ) {
+            Thread.sleep (1000);
+            return;
+        }
+        pressEnter();
+        String expectedresult2 = "zx62ytG380jLU@1a";
+        Assert.assertEquals( expectedresult2,contentParol());
+    }
 
 }
