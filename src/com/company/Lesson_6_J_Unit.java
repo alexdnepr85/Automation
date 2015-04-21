@@ -6,11 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class Lesson_6_J_Unit {
         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         dr = new ChromeDriver();
         dr.manage().window().maximize();
-        dr.get("http://oxogamestudio.com/passwd.current7.htm");
+        dr.get("http://oxogamestudio.com/passwd.current9.htm");
         td = dr.findElements(By.tagName("td"));
 
     }
@@ -235,7 +234,7 @@ public class Lesson_6_J_Unit {
         String expectedresult2 = "fbGEc7Ssq/i7a@1a";
         Assert.assertEquals( expectedresult2,contentParol());
 
-    }*/
+    }
 
     @Test
     public  void  Test12 () throws InterruptedException {
@@ -248,6 +247,25 @@ public class Lesson_6_J_Unit {
         pressEnter();
         String expectedresult2 = "zx62ytG380jLU@1a";
         Assert.assertEquals( expectedresult2,contentParol());
-    }
+    }*/
 
-}
+    public void checkAlert() {
+        try {
+            WebDriverWait wait = new WebDriverWait(dr, 2);
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = dr.switchTo().alert();
+            alert.accept();
+        } catch (Exception e) {
+
+        }
+    }
+    @Test
+    public  void  Test13() {
+        findMaster("22222");
+        findSite("22222");
+        pressEnter();
+        checkAlert();
+        String expectedresult2 = "zx62ytG380jLU@1a";
+        Assert.assertEquals( expectedresult2,contentParol());
+
+}}
