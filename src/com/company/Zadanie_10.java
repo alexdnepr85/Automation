@@ -12,6 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 
+import java.util.List;
+
 /**
  * Created by Никита on 08/05/15.
  */
@@ -104,11 +106,22 @@ public class Zadanie_10 {
     }*/
 
     @Test
-    public  void  Test5(){
+    public  void  Test5() throws InterruptedException {
+        dr.findElement(By.id("gt-sl-gms")).click();
+        Thread.sleep(2000);
+        String a = "Греческий";
+        String b = "Мальтийский";
+        String c = "Словатскийм";
+        String  r = dr.findElement(By.id("gt-sl-gms")).getAttribute("Греческий");
+        Assert.assertEquals(a,r);
 
     }
 
+    /*public static String getMasterLabel() {
 
+        String s = td.get(0).getText();
+        return s;
+        static List<WebElement> td = dr.findElements(By.tagName("td"));*/
 
 
     }
