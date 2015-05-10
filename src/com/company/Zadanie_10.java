@@ -34,19 +34,25 @@ public class Zadanie_10 {
     dr.get("https://translate.google.ru/");
 
         }
-/*
-    public static String perevod(){
+
+    public static String perevod(){    //взять текст из поля перевода
         String perevod1 = dr.findElement(By.xpath("//span [@id='result_box']")).getText();
         return perevod1;
     }
 
+    public static boolean isEnablePravoe() {  // нельзя ввести символы в правую колонку
+       boolean t =  dr.findElement(By.xpath("//span [@id='result_box']")).isEnabled();
+        return t;
+    }
 
+/*
     @Test
-    public void Test1() {              //Проверка на работоспособность
+    public void Test1() throws InterruptedException {         //Проверка на работоспособность
 
         dr.findElement(By.id("source")).sendKeys("Hello . how are you ? ");
         dr.findElement(By.id("gt-submit")).click();
-        String b = "Привет11111";
+        String b = "Здравствуйте. как дела?";
+         Thread.sleep (2000);
         Assert.assertEquals("Проверка на работоспособность", b, perevod());
     }
 
@@ -56,11 +62,18 @@ public class Zadanie_10 {
         String actualTitle = dr.getTitle();
         String expectedTitle = "Переводчик Google";
         Assert.assertEquals(actualTitle, expectedTitle);
-    }*/
+    }
 
     @Test
 
-    public void  Test3()  {
+    public void  Test3()  {      // найти поля и кнопку
+
+       WebElement k = dr.findElement(By.id("source"));
+
+        if (true) {
+            System.out.println("Первое поле нашли");
+        } else {
+            System.out.println("Не нашли первое поле");}
 
         if (dr.findElement(By.id("source")).isDisplayed()) {
             System.out.println("Первое поле нашли");}
@@ -75,12 +88,30 @@ public class Zadanie_10 {
         System.out.println("Не нашли Второе поле");}
 
 
-        if (dr.findElement(By.id("gt-submit11")).isDisplayed()) {
+        if (dr.findElement(By.id("gt-submit")).isDisplayed()) {
             System.out.println("Кнопку нашли");}
         else{
             System.out.println("Не нашли кнопку");}
 
 
 }
+
+
+          @Test     // нет возможности ввести значения в поле перевода
+        public void Test4(){
+              boolean k = true;
+              Assert.assertEquals(k,isEnablePravoe());
+    }*/
+
+    @Test
+    public  void  Test5(){
+
     }
+
+
+
+
+    }
+
+
 
