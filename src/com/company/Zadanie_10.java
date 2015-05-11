@@ -1,6 +1,7 @@
 package com.company;
 
 import com.thoughtworks.selenium.condition.Text;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,195 +21,137 @@ import java.util.List;
 
 @RunWith(JUnit4.class)
 public class Zadanie_10 {
-    public static
-    WebDriver dr;
 
-    @After
-    public void clean () {
-        dr.quit();}
+    WebDriver dr ;
 
 
     @Before
-            public void pered(){
-            System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
-     dr = new ChromeDriver();
-    dr.manage().window().maximize();
-    dr.get("https://translate.google.ru/");
-
-        }
-
-    public static String perevod(){    //взять текст из поля перевода
-        String perevod1 = dr.findElement(By.xpath("//span [@id='result_box']")).getText();
-        return perevod1;
+    public void Start(){
+         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
+         WebDriver dr = new ChromeDriver();
+         Zadanie_10_P_O.open(dr);
     }
 
-    public static boolean isEnablePravoe() {  // нельзя ввести символы в правую колонку
-       boolean t =  dr.findElement(By.xpath("//span [@id='result_box']")).isEnabled();
-        return t;
-    }
-
-    public  static boolean Levaya4ast (){
-        WebElement k = dr.findElement(By.id("source"));
-        return  k.isDisplayed();
-    }
-
-    public  static boolean Pravaya4ast() {
-        WebElement k = dr.findElement(By.xpath("//span [@id='result_box']"));
-        return  k.isDisplayed();
-    }
-
-    public  static  boolean ButtonTransl(){
-        WebElement k = dr.findElement(By.id("gt-submit"));
-        return  k.isDisplayed();
-    }
-
-    public  static  boolean VolumeBtn () {
-        WebElement k = dr.findElement(By.xpath("//div[@class='trans-listen-button goog-toolbar-button']"));
-        return k.isDisplayed();
-    }
-
-public void   LevoePole (String t){
-    dr.findElement(By.id("source")).sendKeys(t);
-}
 
 
 
+    @Test        //Проверка на работоспособность
+    public void Test1() throws InterruptedException {
 
-
-
-
-
-
-
-    @Test
-    public void Test1() throws InterruptedException {         //Проверка на работоспособность
-
-        dr.findElement(By.id("source")).sendKeys("Hello . how are you ? ");
-        dr.findElement(By.id("gt-submit")).click();
+        Zadanie_10_P_O.SendKeysLeft("Hello . how are you ?");
+        Zadanie_10_P_O.ClickTranslate();
         String b = "Здравствуйте. как дела?";
-         Thread.sleep (2000);
-        Assert.assertEquals("Проверка на работоспособность", b, perevod());
+        Thread.sleep (2000);
+        Assert.assertEquals("Проверка на работоспособность", b, Zadanie_10_P_O.GetResult());
+
     }
 
-    @Test
+    @Test     //Проверка title
 
-    public void  Test2(){               //Проверка title
-        String actualTitle = dr.getTitle();
+    public  void Test2(){
         String expectedTitle = "Переводчик Google";
-        Assert.assertEquals(actualTitle, expectedTitle);
+        Assert.assertEquals(Zadanie_10_P_O.getTitle(), expectedTitle);
     }
 
-    @Test
+    @Test     // Проверить наличие полей и кнопки Транслейт
 
-    public void  Test3() {      // найти поля и кнопку
+    public void  Test3() throws InterruptedException {      // найти поля и кнопку
 
-        Assert.assertEquals(true, Levaya4ast());
-        Assert.assertEquals(true, Pravaya4ast());
-        Assert.assertEquals(true, ButtonTransl());
+        Assert.assertEquals(true, Zadanie_10_P_O.DisplayedLeftPart());
+        Assert.assertEquals(true, Zadanie_10_P_O.DisplayedRightPart());
+        Assert.assertEquals(true, Zadanie_10_P_O.DisplayedButton());
+    }
 
+    @Test     // Правое поле не добавляет текст
 
-
-
-          @Test     // нет возможности ввести значения в поле перевода
-        public void Test4(){
+    public void Test4(){
               boolean k = true;
-              Assert.assertEquals(k,isEnablePravoe());
+              Assert.assertEquals(k,Zadanie_10_P_O.isEnableRight());
     }
 
-    @Test
+    @Test   // роверка наличия языков (Греческий...)
+
     public  void  Test5() throws InterruptedException {
-        dr.findElement(By.id("gt-sl-gms")).click();
-        String f= dr.findElement(By.xpath(".//*[@id=':i']")).getText();
-        String f1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();
-        String f2 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();
+
+        Zadanie_10_P_O.SelectLangLeft();
+        String a1 = dr.findElement(By.xpath(".//*[@id=':i']")).getText();  // взять название языка
+        String b1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();   // взять название языка
+        String c1 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();   // взять название языка
         Thread.sleep(2000);
         String a = "греческий";
         String b = "мальтийский";
         String c = "словацкий";
-       Assert.assertEquals(a,f);
-        Assert.assertEquals(b,f1);
-        Assert.assertEquals(c,f2);
-
+        Assert.assertEquals(a,a1);
+        Assert.assertEquals(b,b1);
+        Assert.assertEquals(c,c1);
     }
 
-    public static String getMasterLabel() {
+    @Test  //  Проверка наличия кнопки прослушки
 
-        String s = td.get(0).getText();
-        return s;
-        static List<WebElement> td = dr.findElements(By.tagName("td"));
-
-
-    }
-
-    @Test
     public  void  Test6 () throws InterruptedException {
-        dr.findElement(By.id("source")).sendKeys("Hello");
-        dr.findElement(By.id("gt-submit")).click();
+        Zadanie_10_P_O.SendKeysLeft("Hello");
+        Zadanie_10_P_O.ClickTranslate();
         boolean k = true;
         Thread.sleep(1000);
-        Assert.assertEquals(k,VolumeBtn());
+        Assert.assertEquals(k,Zadanie_10_P_O.DisplayedVolumeButton());
     }
 
+    @Test // Проверка что переводится Hello в другой ссылке
 
-
-    @Test
     public  void  Test7() throws InterruptedException {
-        dr.get("https://translate.google.com/#auto/en/Hello");
-        String k = dr.findElement(By.id("source")).getText();
+        Zadanie_10_P_O.OpenLink();
+        Zadanie_10_P_O.GetLeftField();
         Thread.sleep(1000);
         String k1 = "Привет";
         String k2 = "Hello";
-        Assert.assertEquals(perevod(),k1);
-        Assert.assertEquals(k,k2);
+        Assert.assertEquals(Zadanie_10_P_O.GetResult(),k1);
+        Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),k2);
     }
 
+    @Test   // Выбрать языки , изменить местами, проверить правильность
 
-    @Test
     public  void Test8 () throws InterruptedException {
-        dr.findElement(By.id("gt-sl-gms")).click();
+        Zadanie_10_P_O.SelectLangLeft();
         dr.findElement(By.xpath(".//*[@id=':u']")).click();
-        dr.findElement(By.id("gt-tl-gms")).click();
+        Zadanie_10_P_O.SelectLangRight();
         dr.findElement(By.xpath(".//*[@id=':2r']")).click();
-        dr.findElement(By.id("gt-swap")).click();
-        LevoePole("Hello");
+        Zadanie_10_P_O.ChangeLang();
+        Zadanie_10_P_O.SendKeysLeft("Hello");
         String g = "hola";
         Thread.sleep(1000);
-        String k=  dr.findElement(By.xpath("//span [@id='result_box']")).getText();
-        Assert.assertEquals(g,k);
+        Assert.assertEquals(g,Zadanie_10_P_O.GetResult());
+        dr.quit();
 }
 
-    @Test
+    @Test    // Проверка  cross
+
     public  void  Test9() throws InterruptedException {
-        LevoePole("Hello");
-        dr.findElement(By.id ("gt-clear")).click();
+        Zadanie_10_P_O.SendKeysLeft("Hello");
+        Zadanie_10_P_O.ClickCross();
         Thread.sleep(1000);
-        String g = dr.findElement(By.id("source")).getText();
-        String g3 = dr.findElement(By.id("result_box")).getText();
         String g1 = "";
-        Assert.assertEquals(g,g1);
-        Assert.assertEquals(g3,g1);
-
-
+        Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),g1);
+        Assert.assertEquals(Zadanie_10_P_O.GetResult(),g1);
     }
 
-    @Test
+    @Test   // Выбо укр. языка и перевод
+
     public  void  Test10 () throws InterruptedException {
-        dr.findElement(By.id("gt-sl-gms")).click();
-         dr.findElement(By.xpath(".//*[@id=':25']")).click();
-        dr.findElement(By.id("gt-tl-gms")).click();
-        dr.findElement(By.xpath(".//*[@id=':4o']")).click();
-        dr.findElement(By.id("source")).sendKeys("С У! Г С!");
+        Zadanie_10_P_O.SelectLangLeft();
+        Thread.sleep(1000);
+        dr.findElement(By.xpath("//div[@id=':29']")).click();
+        Zadanie_10_P_O.SelectLangRight();
+        Thread.sleep(1000);
+        dr.findElement(By.xpath("//div[@id=':4u']")).click();
+        Thread.sleep(1000);
+        Zadanie_10_P_O.SendKeysLeft("С У! Г С!");
         Thread.sleep(2000);
-        String k=  dr.findElement(By.xpath("//span [@id='result_box']")).getText();
-        System.out.println(k);
-}
-
-
-
-
-
+        System.out.println(Zadanie_10_P_O.GetResult());
 
     }
+
+
+}
 
 
 
