@@ -77,7 +77,7 @@ public void   LevoePole (String t){
 
 
 
-    /*
+
 
 
     @Test
@@ -189,7 +189,7 @@ public void   LevoePole (String t){
         Assert.assertEquals(g3,g1);
 
 
-    } */
+    }
 
     @Test
     public  void  Test10 () throws InterruptedException {
@@ -201,11 +201,15 @@ public void   LevoePole (String t){
         Thread.sleep(2000);
         String k=  dr.findElement(By.xpath("//span [@id='result_box']")).getText();
         System.out.println(k);
+}
+
+
+
 
 
 
     }
-}
+
 
 
 
