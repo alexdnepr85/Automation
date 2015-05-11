@@ -47,7 +47,39 @@ public class Zadanie_10 {
         return t;
     }
 
-/*
+    public  static boolean Levaya4ast (){
+        WebElement k = dr.findElement(By.id("source"));
+        return  k.isDisplayed();
+    }
+
+    public  static boolean Pravaya4ast() {
+        WebElement k = dr.findElement(By.xpath("//span [@id='result_box']"));
+        return  k.isDisplayed();
+    }
+
+    public  static  boolean ButtonTransl(){
+        WebElement k = dr.findElement(By.id("gt-submit"));
+        return  k.isDisplayed();
+    }
+
+    public  static  boolean VolumeBtn () {
+        WebElement k = dr.findElement(By.xpath("//div[@class='trans-listen-button goog-toolbar-button']"));
+        return k.isDisplayed();
+    }
+
+public void   LevoePole (String t){
+    dr.findElement(By.id("source")).sendKeys(t);
+}
+
+
+
+
+
+
+
+    /*
+
+
     @Test
     public void Test1() throws InterruptedException {         //Проверка на работоспособность
 
@@ -68,63 +100,112 @@ public class Zadanie_10 {
 
     @Test
 
-    public void  Test3()  {      // найти поля и кнопку
+    public void  Test3() {      // найти поля и кнопку
 
-       WebElement k = dr.findElement(By.id("source"));
-
-        if (true) {
-            System.out.println("Первое поле нашли");
-        } else {
-            System.out.println("Не нашли первое поле");}
-
-        if (dr.findElement(By.id("source")).isDisplayed()) {
-            System.out.println("Первое поле нашли");}
-        else{
-            System.out.println("Не нашли первое поле");}
+        Assert.assertEquals(true, Levaya4ast());
+        Assert.assertEquals(true, Pravaya4ast());
+        Assert.assertEquals(true, ButtonTransl());
 
 
-
-    if (dr.findElement(By.xpath("//span [@id='result_box']")).isDisplayed()) {
-        System.out.println("Второе поле нашли");}
-    else{
-        System.out.println("Не нашли Второе поле");}
-
-
-        if (dr.findElement(By.id("gt-submit")).isDisplayed()) {
-            System.out.println("Кнопку нашли");}
-        else{
-            System.out.println("Не нашли кнопку");}
-
-
-}
 
 
           @Test     // нет возможности ввести значения в поле перевода
         public void Test4(){
               boolean k = true;
               Assert.assertEquals(k,isEnablePravoe());
-    }*/
+    }
 
     @Test
     public  void  Test5() throws InterruptedException {
         dr.findElement(By.id("gt-sl-gms")).click();
+        String f= dr.findElement(By.xpath(".//*[@id=':i']")).getText();
+        String f1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();
+        String f2 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();
         Thread.sleep(2000);
-        String a = "Греческий";
-        String b = "Мальтийский";
-        String c = "Словатскийм";
-        String  r = dr.findElement(By.id("gt-sl-gms")).getAttribute("Греческий");
-        Assert.assertEquals(a,r);
+        String a = "греческий";
+        String b = "мальтийский";
+        String c = "словацкий";
+       Assert.assertEquals(a,f);
+        Assert.assertEquals(b,f1);
+        Assert.assertEquals(c,f2);
 
     }
 
-    /*public static String getMasterLabel() {
+    public static String getMasterLabel() {
 
         String s = td.get(0).getText();
         return s;
-        static List<WebElement> td = dr.findElements(By.tagName("td"));*/
+        static List<WebElement> td = dr.findElements(By.tagName("td"));
 
 
     }
+
+    @Test
+    public  void  Test6 () throws InterruptedException {
+        dr.findElement(By.id("source")).sendKeys("Hello");
+        dr.findElement(By.id("gt-submit")).click();
+        boolean k = true;
+        Thread.sleep(1000);
+        Assert.assertEquals(k,VolumeBtn());
+    }
+
+
+
+    @Test
+    public  void  Test7() throws InterruptedException {
+        dr.get("https://translate.google.com/#auto/en/Hello");
+        String k = dr.findElement(By.id("source")).getText();
+        Thread.sleep(1000);
+        String k1 = "Привет";
+        String k2 = "Hello";
+        Assert.assertEquals(perevod(),k1);
+        Assert.assertEquals(k,k2);
+    }
+
+
+    @Test
+    public  void Test8 () throws InterruptedException {
+        dr.findElement(By.id("gt-sl-gms")).click();
+        dr.findElement(By.xpath(".//*[@id=':u']")).click();
+        dr.findElement(By.id("gt-tl-gms")).click();
+        dr.findElement(By.xpath(".//*[@id=':2r']")).click();
+        dr.findElement(By.id("gt-swap")).click();
+        LevoePole("Hello");
+        String g = "hola";
+        Thread.sleep(1000);
+        String k=  dr.findElement(By.xpath("//span [@id='result_box']")).getText();
+        Assert.assertEquals(g,k);
+}
+
+    @Test
+    public  void  Test9() throws InterruptedException {
+        LevoePole("Hello");
+        dr.findElement(By.id ("gt-clear")).click();
+        Thread.sleep(1000);
+        String g = dr.findElement(By.id("source")).getText();
+        String g3 = dr.findElement(By.id("result_box")).getText();
+        String g1 = "";
+        Assert.assertEquals(g,g1);
+        Assert.assertEquals(g3,g1);
+
+
+    } */
+
+    @Test
+    public  void  Test10 () throws InterruptedException {
+        dr.findElement(By.id("gt-sl-gms")).click();
+         dr.findElement(By.xpath(".//*[@id=':25']")).click();
+        dr.findElement(By.id("gt-tl-gms")).click();
+        dr.findElement(By.xpath(".//*[@id=':4o']")).click();
+        dr.findElement(By.id("source")).sendKeys("С У! Г С!");
+        Thread.sleep(2000);
+        String k=  dr.findElement(By.xpath("//span [@id='result_box']")).getText();
+        System.out.println(k);
+
+
+
+    }
+}
 
 
 
