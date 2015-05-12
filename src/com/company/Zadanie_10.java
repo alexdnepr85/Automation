@@ -2,6 +2,7 @@ package com.company;
 
 import com.thoughtworks.selenium.condition.Text;
 
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +23,8 @@ import java.util.List;
 @RunWith(JUnit4.class)
 public class Zadanie_10 {
 
-    WebDriver dr ;
+
+
 
 
     @Before
@@ -43,6 +45,7 @@ public class Zadanie_10 {
         String b = "Здравствуйте. как дела?";
         Thread.sleep (2000);
         Assert.assertEquals("Проверка на работоспособность", b, Zadanie_10_P_O.GetResult());
+        Zadanie_10_P_O.Closeee();
 
     }
 
@@ -51,6 +54,8 @@ public class Zadanie_10 {
     public  void Test2(){
         String expectedTitle = "Переводчик Google";
         Assert.assertEquals(Zadanie_10_P_O.getTitle(), expectedTitle);
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test     // Проверить наличие полей и кнопки Транслейт
@@ -60,6 +65,8 @@ public class Zadanie_10 {
         Assert.assertEquals(true, Zadanie_10_P_O.DisplayedLeftPart());
         Assert.assertEquals(true, Zadanie_10_P_O.DisplayedRightPart());
         Assert.assertEquals(true, Zadanie_10_P_O.DisplayedButton());
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test     // Правое поле не добавляет текст
@@ -67,6 +74,8 @@ public class Zadanie_10 {
     public void Test4(){
               boolean k = true;
               Assert.assertEquals(k,Zadanie_10_P_O.isEnableRight());
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test   // роверка наличия языков (Греческий...)
@@ -74,16 +83,16 @@ public class Zadanie_10 {
     public  void  Test5() throws InterruptedException {
 
         Zadanie_10_P_O.SelectLangLeft();
-        String a1 = dr.findElement(By.xpath(".//*[@id=':i']")).getText();  // взять название языка
-        String b1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();   // взять название языка
-        String c1 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();   // взять название языка
+
         Thread.sleep(2000);
         String a = "греческий";
         String b = "мальтийский";
         String c = "словацкий";
-        Assert.assertEquals(a,a1);
-        Assert.assertEquals(b,b1);
-        Assert.assertEquals(c,c1);
+        Assert.assertEquals(a,Zadanie_10_P_O.GetLang1());
+        Assert.assertEquals(b,Zadanie_10_P_O.GetLang2());
+        Assert.assertEquals(c,Zadanie_10_P_O.GetLang3());
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test  //  Проверка наличия кнопки прослушки
@@ -94,6 +103,8 @@ public class Zadanie_10 {
         boolean k = true;
         Thread.sleep(1000);
         Assert.assertEquals(k,Zadanie_10_P_O.DisplayedVolumeButton());
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test // Проверка что переводится Hello в другой ссылке
@@ -106,22 +117,26 @@ public class Zadanie_10 {
         String k2 = "Hello";
         Assert.assertEquals(Zadanie_10_P_O.GetResult(),k1);
         Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),k2);
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test   // Выбрать языки , изменить местами, проверить правильность
 
     public  void Test8 () throws InterruptedException {
         Zadanie_10_P_O.SelectLangLeft();
-        dr.findElement(By.xpath(".//*[@id=':u']")).click();
+        Zadanie_10_P_O.ByXPath1();
         Zadanie_10_P_O.SelectLangRight();
-        dr.findElement(By.xpath(".//*[@id=':2r']")).click();
+       Zadanie_10_P_O.ByXPath2();
         Zadanie_10_P_O.ChangeLang();
         Zadanie_10_P_O.SendKeysLeft("Hello");
         String g = "hola";
         Thread.sleep(1000);
         Assert.assertEquals(g,Zadanie_10_P_O.GetResult());
-        dr.quit();
-}
+        Zadanie_10_P_O.Closeee();
+
+
+    }
 
     @Test    // Проверка  cross
 
@@ -132,6 +147,8 @@ public class Zadanie_10 {
         String g1 = "";
         Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),g1);
         Assert.assertEquals(Zadanie_10_P_O.GetResult(),g1);
+        Zadanie_10_P_O.Closeee();
+
     }
 
     @Test   // Выбо укр. языка и перевод
@@ -139,14 +156,16 @@ public class Zadanie_10 {
     public  void  Test10 () throws InterruptedException {
         Zadanie_10_P_O.SelectLangLeft();
         Thread.sleep(1000);
-        dr.findElement(By.xpath("//div[@id=':29']")).click();
+        Zadanie_10_P_O.ByXPath3();
         Zadanie_10_P_O.SelectLangRight();
         Thread.sleep(1000);
-        dr.findElement(By.xpath("//div[@id=':4u']")).click();
+        Zadanie_10_P_O.ByXPath4();
         Thread.sleep(1000);
         Zadanie_10_P_O.SendKeysLeft("С У! Г С!");
         Thread.sleep(2000);
         System.out.println(Zadanie_10_P_O.GetResult());
+        Zadanie_10_P_O.Closeee();
+
 
     }
 

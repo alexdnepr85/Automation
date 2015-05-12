@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 /**
  * Created by Никита on 11/05/15.
  */
@@ -91,6 +93,37 @@ public class Zadanie_10_P_O {
         public static String getTitle() {
             return dr.getTitle();
         }
+
+    public static String GetLang1() {
+    String a1 = dr.findElement(By.xpath(".//*[@id=':i']")).getText();
+    return a1; } // взять название языка
+
+    public static String GetLang2() {
+        String a1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();
+        return a1; } // взять название языка
+
+    public static String GetLang3() {
+        String a1 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();
+        return a1; } // взять название языка
+
+    public static void ByXPath1 (){
+        dr.findElement(By.xpath(".//*[@id=':u']")).click();}
+
+    public static void ByXPath2 (){
+        dr.findElement(By.xpath(".//*[@id=':2r']")).click();}
+
+    public static void ByXPath3 (){
+        dr.findElement(By.xpath("//div[@id=':29']")).click();}
+
+    public static void ByXPath4 (){
+        dr.findElement(By.xpath("//div[@id=':4u']")).click();}
+
+    @After
+    public static void Closeee() {
+        dr.quit();
     }
+    }
+
+
 
 
