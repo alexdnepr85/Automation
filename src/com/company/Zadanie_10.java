@@ -14,6 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 /**
@@ -22,6 +25,18 @@ import java.util.List;
 
 @RunWith(JUnit4.class)
 public class Zadanie_10 {
+    // для окна загрузки файлов /*
+    setClipboardData("C:\\file.jpg");
+    Robot robot = new Robot();
+    robot.keyPress(KeyEvent.VK_CONTROL);
+    robot.keyPress(KeyEvent.VK_V);
+    robot.keyRelease(KeyEvent.VK_V);
+    robot.keyRelease(KeyEvent.VK_CONTROL);
+    robot.keyPress(KeyEvent.VK_ENTER);
+    robot.keyRelease(KeyEvent.VK_ENTER);
+     public static void setClipboardData(String string) {
+        StringSelection stringSelection = new StringSelection(string);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);}*/
 
 
 
@@ -53,7 +68,7 @@ public class Zadanie_10 {
 
     public  void Test2(){
         String expectedTitle = "Переводчик Google";
-        Assert.assertEquals(Zadanie_10_P_O.getTitle(), expectedTitle);
+        Assert.assertEquals(expectedTitle,Zadanie_10_P_O.getTitle() );
         Zadanie_10_P_O.Closeee();
 
     }
@@ -115,8 +130,8 @@ public class Zadanie_10 {
         Thread.sleep(1000);
         String k1 = "Привет";
         String k2 = "Hello";
-        Assert.assertEquals(Zadanie_10_P_O.GetResult(),k1);
-        Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),k2);
+        Assert.assertEquals(k1,Zadanie_10_P_O.GetResult());
+        Assert.assertEquals(k2,Zadanie_10_P_O.GetLeftField());
         Zadanie_10_P_O.Closeee();
 
     }
@@ -145,8 +160,8 @@ public class Zadanie_10 {
         Zadanie_10_P_O.ClickCross();
         Thread.sleep(1000);
         String g1 = "";
-        Assert.assertEquals(Zadanie_10_P_O.GetLeftField(),g1);
-        Assert.assertEquals(Zadanie_10_P_O.GetResult(),g1);
+        Assert.assertEquals(g1,Zadanie_10_P_O.GetLeftField());
+        Assert.assertEquals(g1,Zadanie_10_P_O.GetResult());
         Zadanie_10_P_O.Closeee();
 
     }
@@ -165,11 +180,7 @@ public class Zadanie_10 {
         Thread.sleep(2000);
         System.out.println(Zadanie_10_P_O.GetResult());
         Zadanie_10_P_O.Closeee();
-
-
     }
-
-
 }
 
 

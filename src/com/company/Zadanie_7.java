@@ -38,7 +38,7 @@ public class Zadanie_7 {
 
 }
 
-
+//      /usr/local/bin/chromedriver     C:/Nikita/Work/Avtomatization/chromedriver.exe
 @Test
         public  void Test1 () {
 
