@@ -29,12 +29,12 @@ public class Zadanie_10 {
 
     @Before
     public void Start(){
-         System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
+         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
          WebDriver dr = new ChromeDriver();
          Zadanie_10_P_O.open(dr);
     }
 
-
+     //   /usr/local/bin/chromedriver     drone    C:/Nikita/Work/Avtomatization/chromedriver.exe
 
 
     @Test        //Проверка на работоспособность
