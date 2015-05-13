@@ -127,7 +127,10 @@ public class Zadanie_10_P_O {
     public static void ByXPath4 (){
         dr.findElement(By.xpath("//div[@id=':4u']")).click();}
 
-
+    @After
+    public static void Closeee() {
+        dr.quit();
+    }
     }
 
 
