@@ -1,5 +1,6 @@
 package com.company;
 
+import com.thoughtworks.selenium.webdriven.commands.GetText;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by Никита on 11/05/15.
  */
+
 public class Zadanie_10_P_O {
 
     public  static  WebDriver dr ;
@@ -28,11 +30,11 @@ public class Zadanie_10_P_O {
 
     //взять текст из поля перевода
     public static String GetResult(){
-        String k = dr.findElement(By.xpath("//span [@id='result_box']")).getText();
+        String k = GetText(dr.findElement(By.xpath("//span [@id='result_box']")));
         return k;
     }
 
-    public  static   String getText (WebElement e ) {
+    public  static   String GetText (WebElement e ) {
     String tmp = e.getText();
      return new String(tmp.getBytes(Charset.forName("utf-8")));
     }
@@ -85,7 +87,7 @@ public class Zadanie_10_P_O {
     }
 
     public  static String GetLeftField (){
-        String k = dr.findElement(By.id("source")).getText();
+        String k = GetText(dr.findElement(By.id("source")));
         return k;
     }
 
@@ -102,15 +104,15 @@ public class Zadanie_10_P_O {
         }
 
     public static String GetLang1() {
-    String a1 = dr.findElement(By.xpath(".//*[@id=':i']")).getText();
+    String a1 = GetText(dr.findElement(By.xpath(".//*[@id=':i']")));
     return a1; } // взять название языка
 
     public static String GetLang2() {
-        String a1 = dr.findElement(By.xpath(".//*[@id=':1b']")).getText();
+        String a1 = GetText(dr.findElement(By.xpath(".//*[@id=':1b']")));
         return a1; } // взять название языка
 
     public static String GetLang3() {
-        String a1 = dr.findElement(By.xpath(".//*[@id=':1t']")).getText();
+        String a1 = GetText(dr.findElement(By.xpath(".//*[@id=':1t']")));
         return a1; } // взять название языка
 
     public static void ByXPath1 (){
@@ -125,10 +127,7 @@ public class Zadanie_10_P_O {
     public static void ByXPath4 (){
         dr.findElement(By.xpath("//div[@id=':4u']")).click();}
 
-    @After
-    public static void Closeee() {
-        dr.quit();
-    }
+
     }
 
 
