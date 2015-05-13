@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 /**
@@ -30,6 +31,12 @@ public class Zadanie_10_P_O {
         String k = dr.findElement(By.xpath("//span [@id='result_box']")).getText();
         return k;
     }
+
+    public  static   String getText (WebElement e ) {
+    String tmp = e.getText();
+     return new String(tmp.getBytes(Charset.forName("utf-8")));
+    }
+
     // нельзя ввести символы в правую колонку
     public static boolean isEnableRight() {
         boolean t =  dr.findElement(By.xpath("//span [@id='result_box']")).isEnabled();
