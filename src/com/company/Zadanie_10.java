@@ -25,7 +25,8 @@ import java.util.List;
 
 @RunWith(JUnit4.class)
 public class Zadanie_10 {
-    // для окна загрузки файлов /*
+    // для окна загрузки файлов
+     /*
     setClipboardData("C:\\file.jpg");
     Robot robot = new Robot();
     robot.keyPress(KeyEvent.VK_CONTROL);
@@ -43,10 +44,10 @@ public class Zadanie_10 {
 
 
     @Before
-    public void Start(){
-         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-         WebDriver dr = new ChromeDriver();
-         Zadanie_10_P_O.open(dr);
+     public void Start(){
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+        WebDriver dr = new ChromeDriver();
+        Zadanie_10_P_O.open(dr);
     }
 
      //   /usr/local/bin/chromedriver     drone    C:/Nikita/Work/Avtomatization/chromedriver.exe

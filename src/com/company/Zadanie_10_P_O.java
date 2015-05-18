@@ -26,6 +26,13 @@ public class Zadanie_10_P_O {
         dr.get("https://translate.google.com/");
     }
 
+    public  static  void  open1 (WebDriver dr) {
+
+        Zadanie_10_P_O.dr = dr;
+        dr.manage().window().maximize();
+        dr.get("http://booking.uz.gov.ua/ru/");
+    }
+
 
 
     //взять текст из поля перевода
