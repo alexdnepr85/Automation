@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by Никита on 18/05/15.
  */
@@ -11,6 +13,7 @@ public class Zadanie_11_PO {
 
 
     public  static WebDriver dr ;
+    static List<WebElement> td = dr.findElements(By.xpath("//tr[@class='vToolsDataTableRow2']/td[@class='num']/a"));
 
     public  static  void  open1 (WebDriver dr) {
 
@@ -73,16 +76,20 @@ public class Zadanie_11_PO {
         WebElement k = dr.findElement(By.xpath("//div [@class = 'vToolsPopupHeader']/span"));
         return k.isDisplayed();
     }
-    public static  String ContentDisplayed() {
-        String q = dr.findElements(By.xpath("//tr[@class='vToolsDataTableRow2']/td[@class='num']/a")).getText();
-        return q;
-    }
 
-    while (ContentDisplayed() != "") {
-        Thread.sleep(1000);
-        return ;
-    }
 
+public static String  Zaderjka1 () {
+    String d = dr.findElements(By.xpath("//tr[@class='vToolsDataTableRow2']/td[@class='num']/a")).getText();
+    return d;
+}
+
+
+public  static  void  Zaderjka () throws InterruptedException {
+
+    while ( Zaderjka1() != "") {
+            Thread.sleep(1000);
+    return ;}
+}
 
 }
 

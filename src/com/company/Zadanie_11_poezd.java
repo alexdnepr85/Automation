@@ -45,6 +45,7 @@ public class Zadanie_11_poezd {
 
 
 
+
         String k = "043 К";
         String k1 = "143 К";
         Assert.assertEquals(k,Zadanie_11_PO.GetResult1());
