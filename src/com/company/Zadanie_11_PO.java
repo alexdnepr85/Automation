@@ -76,7 +76,7 @@ public class Zadanie_11_PO {
         WebElement k = dr.findElement(By.xpath("//div [@class = 'vToolsPopupHeader']/span"));
         return k.isDisplayed();
     }
-
+/*
 
 public static String  Zaderjka1 () {
     String d = dr.findElements(By.xpath("//tr[@class='vToolsDataTableRow2']/td[@class='num']/a")).getText();
@@ -90,7 +90,7 @@ public  static  void  Zaderjka () throws InterruptedException {
             Thread.sleep(1000);
     return ;}
 }
-
+*/
 }
 
 
