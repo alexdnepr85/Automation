@@ -23,10 +23,13 @@ import java.awt.event.KeyEvent;
 public class Tiered_pricing {
 public static  WebDriver dr;
 
+    //usr/bin/google-chrome
+    //https://root:letmein@dev28.pdffiller.com/en/login.htm
 
     @Before
     public  void Start1() throws AWTException, InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
+
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         WebDriver dr = new ChromeDriver();
         P_O_TieredP.open1(dr);
         Thread.sleep(2000);

@@ -16,8 +16,6 @@ public class P_O_TieredP {
 
     public  static WebDriver dr ;
 
-
-
     public  static  void  open1 (WebDriver dr) {
 
         P_O_TieredP.dr = dr;
