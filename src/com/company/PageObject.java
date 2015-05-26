@@ -111,6 +111,7 @@ public class PageObject {
         try {
             WebDriverWait wait = new WebDriverWait(dr, 2);
             wait.until(ExpectedConditions.alertIsPresent());
+
             Alert alert = dr.switchTo().alert();
             alert.accept();
         } catch (Exception e) {

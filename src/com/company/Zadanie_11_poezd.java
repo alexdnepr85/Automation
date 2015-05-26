@@ -23,10 +23,10 @@ public class Zadanie_11_poezd {
         Zadanie_11_PO.open1(dr);
     }
 
-    @After
+   /* @After
     public void END(){
         Zadanie_11_PO.close();
-    }
+    }*/
 
     @Test
 
