@@ -24,12 +24,12 @@ public class Tiered_pricing {
 public static  WebDriver dr;
 
     //usr/bin/google-chrome
-    //https://root:letmein@dev28.pdffiller.com/en/login.htm
+    //C:/Nikita/Work/Avtomatization/chromedriver.exe
 
     @Before
     public  void Start1() throws AWTException, InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
         WebDriver dr = new ChromeDriver();
         P_O_TieredP.open1(dr);
         Thread.sleep(2000);
@@ -49,7 +49,10 @@ public static  WebDriver dr;
         Thread.sleep(1000);
         P_O_TieredP.ClickRegister();
         P_O_TieredP.SendEmailPass();
+        Thread.sleep(1000);
+        P_O_TieredP.ErrorEmail();
         P_O_TieredP.WaitButton("//div[@class = 'add_new_forms_text']");
+
 
 
 

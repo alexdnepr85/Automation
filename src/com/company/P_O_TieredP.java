@@ -22,25 +22,65 @@ public class P_O_TieredP {
         dr.manage().window().maximize();
         dr.get("https://root:letmein@dev28.pdffiller.com/en/login.htm");
     }
-
     public  static  void  close () {
         dr.close();
     }  // закрыть браузер
+
+
+
+
+
+
+
+
+       public static  void  SendEmailPass () throws InterruptedException {  // передача мыла и пароля
+        int k = 208;
+        String email = "ageevnikitatest+tiered" + k + "@gmail.com";
+        dr.findElement(By.xpath("//div//td/input[@class = 'placeholders input old_vers2 grad-input']")).sendKeys(email);
+        dr.findElement(By.xpath("//div//td/input[@class = 'placeholders old_vers2 input grad-input']")).sendKeys(
+                "1111");
+        dr.findElement(By.id("register_btn_site")).click();
+
+    }
+
+    public static String g() {
+        String k = dr.findElement(By.xpath("//div [@class = 'login-offset2']/a ")).getText();
+        return k;                                          // Generate
+    }
 
     public static void ClickRegister () { // нажатие Register
         dr.findElement(By.xpath("//div//a[@class= 'btn-gray btns1']")).click();
     }
 
+   public static boolean WindDisplayed (){
+        WebElement k = dr.findElement(By.xpath("//div [@class = 'login-offset2']/a"));
+        return k.isDisplayed();}
 
-    public static  void  SendEmailPass (){  // передача мыла и пароля
-        dr.findElement(By.xpath("//div//td/input[@class = 'placeholders input old_vers2 grad-input']")).sendKeys(
-                "ageevnikitatest+tief33fvds@gre.gre"
-        );
-        dr.findElement(By.xpath("//div//td/input[@class = 'placeholders old_vers2 input grad-input']")).sendKeys(
-                "1111"
-        );
-        dr.findElement(By.id("register_btn_site")).click();
-    }
+    public  static void  ErrorEmail() throws InterruptedException {
+        String y = dr.getTitle();
+        int  k= 223;
+
+        if (WindDisplayed() != true ){
+           // y = dr.getTitle();
+        while (dr.findElement(By.xpath("//div [@class = 'login-offset2']/a")) == null) {
+            String email = "ageevnikitatest+tiered" + k + "@gmail.com";
+            dr.findElement(By.xpath("//div[@class= 'log_reg']")).click();
+            //ClickRegister();
+            dr.findElement(By.xpath("//div//td/input[@class = 'placeholders input old_vers2 grad-input']")).sendKeys(email);
+            dr.findElement(By.xpath("//div//td/input[@class = 'placeholders old_vers2 input grad-input']")).sendKeys
+                ("1111");
+            dr.findElement(By.id("register_btn_site")).click();
+            k = k+1;
+        Thread.sleep(5000);}
+
+    }}
+
+
+
+
+
+
+
 
 
     public static boolean WaitButton (String xpath){ //   для ожидания элемента на странице по xpath
