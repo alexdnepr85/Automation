@@ -1,6 +1,7 @@
 package com.company;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,30 +35,39 @@ public static  WebDriver dr;
         P_O_TieredP.open1(dr);
         Thread.sleep(2000);
     }
-    @After
+    /*@After
     public void END(){
         P_O_TieredP.close();
-    }
+    }*/
 
 
 
 
 
-    @Test
+    @Test  // Регистрация нового юзера.
 
-    public  void  Test1 () throws InterruptedException, AWTException {
+    public   void  Test1 () throws InterruptedException, AWTException {
         Thread.sleep(1000);
         P_O_TieredP.ClickRegister();
         P_O_TieredP.SendEmailPass();
         Thread.sleep(1000);
         P_O_TieredP.ErrorEmail();
         P_O_TieredP.WaitButton("//div[@class = 'add_new_forms_text']");
-
+        P_O_TieredP.ClickServices();
+        String k1 = "Save 66% off regular price!";
+        Assert.assertEquals(k1, P_O_TieredP.CheckServices());
+        P_O_TieredP.ClickSubscribeOnServices();
+        P_O_TieredP.WaitButton("//li [@id ='professional']//div [@class='list-plan-item__button \" +\n" +
+                "                \"list-plan-item__button_bottom annual active']//a[text()]");
+       // P_O_TieredP.PrintPaymentText();
+        P_O_TieredP.DeleteAccoutn();
 
 
 
 
    }
+
+
 
 }
 
