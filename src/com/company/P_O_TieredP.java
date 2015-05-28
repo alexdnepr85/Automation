@@ -34,7 +34,7 @@ public class P_O_TieredP {
 
 
        public static  void  SendEmailPass () throws InterruptedException {  // передача мыла и пароля
-        int k = 208;
+        int k = 229;
         String email = "ageevnikitatest+tiered" + k + "@gmail.com";
         dr.findElement(By.xpath("//div//td/input[@class = 'placeholders input old_vers2 grad-input']")).sendKeys(email);
         dr.findElement(By.xpath("//div//td/input[@class = 'placeholders old_vers2 input grad-input']")).sendKeys(
@@ -53,16 +53,17 @@ public class P_O_TieredP {
     }
 
    public static boolean WindDisplayed (){
+try {
         WebElement k = dr.findElement(By.xpath("//div [@class = 'login-offset2']/a"));
         return k.isDisplayed();}
-
+catch (org.openqa.selenium.NoSuchElementException e) {
+return false;}
+}
+    //!dr.getCurrentUrl().contains("forms.htm"
     public  static void  ErrorEmail() throws InterruptedException {
         String y = dr.getTitle();
-        int  k= 223;
-
-        if (WindDisplayed() != true ){
-           // y = dr.getTitle();
-        while (dr.findElement(By.xpath("//div [@class = 'login-offset2']/a")) == null) {
+        int  k= 226;
+                while (WindDisplayed() ) {
             String email = "ageevnikitatest+tiered" + k + "@gmail.com";
             dr.findElement(By.xpath("//div[@class= 'log_reg']")).click();
             //ClickRegister();
@@ -73,7 +74,7 @@ public class P_O_TieredP {
             k = k+1;
         Thread.sleep(5000);}
 
-    }}
+    }
 
 
 
