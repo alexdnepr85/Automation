@@ -59,7 +59,7 @@ public static  WebDriver dr;
         P_O_TieredP.ClickSubscribeOnServices();
         P_O_TieredP.WaitButton("//li [@id ='professional']//div [@class='list-plan-item__button \" +\n" +
                 "                \"list-plan-item__button_bottom annual active']//a[text()]");
-       // P_O_TieredP.PrintPaymentText();
+        P_O_TieredP.PrintPaymentText();
         P_O_TieredP.DeleteAccoutn();
 
 

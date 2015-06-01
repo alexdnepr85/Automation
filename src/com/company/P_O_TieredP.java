@@ -58,6 +58,20 @@ public class P_O_TieredP {
             return false;}
     }
 
+
+    public static boolean CheckPaymentButton (String xpath){  // Поиск эл-та на стр Payment
+
+        try {
+            WebElement k = dr.findElement(By.xpath(xpath));
+            if ( k.isDisplayed() ){
+                return true;}
+            else  return  false;
+            }
+
+        catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;}
+    }
+
             //!dr.getCurrentUrl().contains("forms.htm")    взять ссылку сравнить с частью
 
 
@@ -107,13 +121,25 @@ public class P_O_TieredP {
 
     }
 
-    public  static  String   PrintPaymentText () {
-        String  k =  dr.findElement(By.xpath("//li [@id ='professional']//div [@class='list-plan-item__button " +
-                "list-plan-item__button_bottom annual active']//a[text()]")).getText();
-        System.out.println("Кнопка на Payment : " + k );
-        return k;   // обернуть в try catch , при ошибке искать другой Xpath
+    public  static void PrintPaymentText() {
+        try {
+        if (CheckPaymentButton("//li [@id ='professional']//div [@class='list-plan-item__button " +
+                "list-plan-item__button_bottom annual active']//a[text()]") == false){
+            String k = dr.findElement(By.xpath("//li [@id ='professional']//div [@class='list-plan-item__button \" +\n" +
+                    "                \"list-plan-item__button_bottom annual active']//a[text()]")).getText();
+                System.out.println("Кнопка на Payment 1 : " + k);
+
+            if (CheckPaymentButton("//div [@class = 'list-plan-item__button-outer'] // a [@class =' xh-highlight']")
+                == true) { String k1 = dr.findElement(By.xpath("//div [@class = 'list-plan-item__button-outer'] //" +
+                    " a [@class =' xh-highlight']")).getText();
+                System.out.println("Кнопка на Payment 2 : " + k1);
+            }}}
+        catch (org.openqa.selenium.NoSuchElementException e) {DeleteAccoutn();}
 
     }
+
+
+
 
     public  static void DeleteAccoutn (){
         dr.findElement(By.xpath(".//a [text()='My Account']")).click();
@@ -133,11 +159,6 @@ public class P_O_TieredP {
         } catch (Exception e) {
 
         }
+    }
 
-
-
-
-
-
-
-    }}
+}
