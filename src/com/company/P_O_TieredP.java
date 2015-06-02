@@ -20,7 +20,7 @@ public class P_O_TieredP {
 
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://pdffiller.com/en/login.htm");}
+        dr.get("https://dev11.pdffiller.com/en/login.htm");}
 
 //https://root:letmein@dev28.pdffiller.com/en/login.htm
     public  static  void  close () {
@@ -89,12 +89,12 @@ public class P_O_TieredP {
 
     }
 
-    public static boolean WaitButton (String xpath){ //   для ожидания элемента на странице по xpath
+    public static boolean WaitButton (String xpath,String p){ //   для ожидания элемента на странице по xpath
 
         try{
             new WebDriverWait(dr,10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         }catch (TimeoutException e){
-            System.out.println("Element still not visible after 10 seconds!");
+            System.out.println("No such element: "+ p );
             return false;
         }
         return true;
@@ -118,32 +118,66 @@ public class P_O_TieredP {
                 "a[@class='laundry-table-item__button button-h redirect-button']")).click();
 
     }
-public static String url1 = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
-    public  static void PrintPaymentText() {
-        //try {
+
+    public static String url1 = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
+    public static  String url2 = "//div //li  [@id= 'personal']//a [text()= 'Select Plan!'] ";
+    public static  String url3 = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
+
+
+    public  static void GetButtonText() {
+
         if (CheckPaymentButton(url1)){
-            String k = dr.findElement(By.xpath(url1)).getText();
-                System.out.println("Кнопка на Payment 1 : " + k);}
+            String k1 = dr.findElement(By.xpath(url1)).getText();
+                System.out.println("Name button on payment page 1 : " + k1);}
 
-            else if (CheckPaymentButton("//div [@class = 'list-plan-item__button-outer'] // a [@class =' xh-highlight']")
-                ) { String k1 = dr.findElement(By.xpath("//div [@class = 'list-plan-item__button-outer'] //" +
-                    " a [@class =' xh-highlight']")).getText();
-                System.out.println("Кнопка на Payment 2 : " + k1);
-            }}
-
-      //  catch (org.openqa.selenium.NoSuchElementException e) {DeleteAccoutn();}
-
-
-
+            else if (CheckPaymentButton(url2)
+                ) { String k1 = dr.findElement(By.xpath(url2)).getText();
+                System.out.println("Name button on payment page 2 : " + k1);
+            }
+        else if (CheckPaymentButton(url3)
+                ) { String k1 = dr.findElement(By.xpath(url3)).getText();
+            System.out.println("Name button on payment page 3 : " + k1);
+        }
 
 
-    public  static void DeleteAccoutn (){
+    }
+
+
+    public static void   DeleteAccoutn () throws InterruptedException {
+        dr.findElement(By.xpath(".//a [text()='My Account']")).click();
+        dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
+
+        if  (dr.findElement(By.xpath("//a [@href='/en/account/?op=payment_options']")).isDisplayed()){
+            dr.findElement(By.xpath("//a [@href='/en/account/?op=payment_options']")).click();
+            Thread.sleep(2000);
+            dr.findElement(By.xpath("//a [@href='/en/account/?op=cancel_bt']")).click();
+
+      try {
+            dr.findElement(By.xpath("//div [@class = 'new-btn btn--light-gray cancel-button']")).click();
+            dr.findElement(By.xpath(".//a [text()='My Account']")).click();
+            dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
+            System.out.println("Delete by Version 1 ");
+            dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
+            checkAlert();}
+
+         catch(org.openqa.selenium.NoSuchElementException e)
+
+            {
+            dr.findElement(By.xpath("//a [@href='/en/payment/subscription_cancel.htm?v=interview']")).click();
+            dr.findElement(By.xpath(".//a [text()='My Account']")).click();
+                dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
+                System.out.println("Delete by Version 2 ");
+            dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
+            checkAlert();}}
+
+
+        else {
         dr.findElement(By.xpath(".//a [text()='My Account']")).click();
         dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
         dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
-        checkAlert();
+        checkAlert();}}
 
-    }
+
 
     public static  void checkAlert() {
         try {
@@ -154,6 +188,46 @@ public static String url1 = "//li [@id ='professional']//div [@class='list-plan-
             alert.accept();
         } catch (Exception e) {
 
+        }
+    }
+
+
+    public static void CheckTextServices (){
+        try {
+            String k1 = "Save 66% off regular price!";
+            Assert.assertEquals(k1, CheckServices());
+            System.out.println(k1);
+        }
+        catch (org.junit.ComparisonFailure e ) {
+            System.out.println( "Incorrect text on Services page");
+        }
+    }
+
+
+    public  static  void Payment () {
+
+        try {
+        dr.findElement(By.xpath("//td/input  [@ id ='first_name']")).sendKeys("Ageev Nikita");
+        dr.findElement(By.xpath("//td/input  [@ id ='card_number']")).sendKeys("4111111111111111");
+        dr.findElement(By.xpath("//td/input  [@ id ='card_security']")).sendKeys("123");
+        dr.findElement(By.xpath("//td/input  [@ id ='card_address1']")).sendKeys("Biling Address 123");
+        dr.findElement(By.xpath("//td/input  [@ id ='card_city']")).sendKeys("Doneck");
+        dr.findElement(By.xpath("//td/input  [@ id ='card_zip']")).sendKeys("456789");
+        dr.findElement(By.xpath("//td/select   [@ id ='card_countries']/option [@value= 'US' ]")).click();
+        dr.findElement(By.xpath("//td/button [@id = 'payment_button_new']")).click();
+            System.out.println( "Payment successful");}
+
+        catch (org.openqa.selenium.NoSuchElementException e){
+            System.out.println("Payment not successful");
+        }
+
+    }
+
+    public  static void  ClickChoiseButton (){
+        try{
+        dr.findElement(By.xpath("//div [@id ='payment_button']/a[@class= 'button-h']")).click();}
+        catch (org.openqa.selenium.NoSuchElementException e){
+            System.out.println("Failed button on choise page");
         }
     }
 

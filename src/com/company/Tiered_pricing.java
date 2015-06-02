@@ -35,10 +35,10 @@ public static  WebDriver dr;
         P_O_TieredP.open1(dr);
         Thread.sleep(2000);
     }
-    /*@After
+   @After
     public void END(){
         P_O_TieredP.close();
-    }*/
+    }
 
 
 
@@ -52,14 +52,16 @@ public static  WebDriver dr;
         P_O_TieredP.SendEmailPass();
         Thread.sleep(1000);
         P_O_TieredP.ErrorEmail();
-        P_O_TieredP.WaitButton("//div[@class = 'add_new_forms_text']");
+        P_O_TieredP.WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form");
         P_O_TieredP.ClickServices();
-        String k1 = "Save 66% off regular price!";
-        Assert.assertEquals(k1, P_O_TieredP.CheckServices());
+        P_O_TieredP.CheckTextServices();
         P_O_TieredP.ClickSubscribeOnServices();
-        P_O_TieredP.WaitButton("//li [@id ='professional']//div [@class='list-plan-item__button \" +\n" +
-                "                \"list-plan-item__button_bottom annual active']//a[text()]");
-        P_O_TieredP.PrintPaymentText();
+        P_O_TieredP.WaitButton("//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]",
+                "Button on payment page");
+        P_O_TieredP.GetButtonText();
+        P_O_TieredP.Payment();
+        P_O_TieredP.WaitButton("//div [@id ='payment_button']/a[@class= 'button-h']", "Continue go to ...");
+        P_O_TieredP.ClickChoiseButton();
         P_O_TieredP.DeleteAccoutn();
 
 
