@@ -20,9 +20,10 @@ public class P_O_TieredP {
 
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://dev11.pdffiller.com/en/login.htm");}
+        dr.get("https://pdffiller.com/en/login.htm");}
 
-//https://root:letmein@dev28.pdffiller.com/en/login.htm
+    //https://root:letmein@dev28.pdffiller.com/en/login.htm
+
     public  static  void  close () {
         dr.close();
     }  // закрыть браузер
@@ -144,15 +145,16 @@ public class P_O_TieredP {
 
 
     public static void   DeleteAccoutn () throws InterruptedException {
+        if (!dr.getCurrentUrl().contains("#payment_cc")){
         dr.findElement(By.xpath(".//a [text()='My Account']")).click();
-        dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
+        dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();}
 
-        if  (dr.findElement(By.xpath("//a [@href='/en/account/?op=payment_options']")).isDisplayed()){
+        if  (CheckPaymentButton("//a [@href='/en/account/?op=payment_options']")){
             dr.findElement(By.xpath("//a [@href='/en/account/?op=payment_options']")).click();
             Thread.sleep(2000);
             dr.findElement(By.xpath("//a [@href='/en/account/?op=cancel_bt']")).click();
 
-      try {
+      if (CheckPaymentButton("//div [@class = 'new-btn btn--light-gray cancel-button']")){
             dr.findElement(By.xpath("//div [@class = 'new-btn btn--light-gray cancel-button']")).click();
             dr.findElement(By.xpath(".//a [text()='My Account']")).click();
             dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
@@ -160,9 +162,9 @@ public class P_O_TieredP {
             dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
             checkAlert();}
 
-         catch(org.openqa.selenium.NoSuchElementException e)
 
-            {
+
+          else if (CheckPaymentButton("//a [@href='/en/payment/subscription_cancel.htm?v=interview']")) {
             dr.findElement(By.xpath("//a [@href='/en/payment/subscription_cancel.htm?v=interview']")).click();
             dr.findElement(By.xpath(".//a [text()='My Account']")).click();
                 dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
@@ -206,7 +208,6 @@ public class P_O_TieredP {
 
     public  static  void Payment () {
 
-        try {
         dr.findElement(By.xpath("//td/input  [@ id ='first_name']")).sendKeys("Ageev Nikita");
         dr.findElement(By.xpath("//td/input  [@ id ='card_number']")).sendKeys("4111111111111111");
         dr.findElement(By.xpath("//td/input  [@ id ='card_security']")).sendKeys("123");
@@ -215,20 +216,19 @@ public class P_O_TieredP {
         dr.findElement(By.xpath("//td/input  [@ id ='card_zip']")).sendKeys("456789");
         dr.findElement(By.xpath("//td/select   [@ id ='card_countries']/option [@value= 'US' ]")).click();
         dr.findElement(By.xpath("//td/button [@id = 'payment_button_new']")).click();
-            System.out.println( "Payment successful");}
 
-        catch (org.openqa.selenium.NoSuchElementException e){
+        if (dr.getCurrentUrl().contains("#payment_cc")) {
+
             System.out.println("Payment not successful");
         }
 
     }
 
     public  static void  ClickChoiseButton (){
-        try{
+        if (CheckPaymentButton("//div [@id ='payment_button']/a[@class= 'button-h']")){
         dr.findElement(By.xpath("//div [@id ='payment_button']/a[@class= 'button-h']")).click();}
-        catch (org.openqa.selenium.NoSuchElementException e){
-            System.out.println("Failed button on choise page");
+
         }
     }
 
-}
+
