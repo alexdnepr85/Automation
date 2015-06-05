@@ -30,7 +30,7 @@ public static  WebDriver dr;
     @Before
     public  void Start1() throws AWTException, InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "C:/Nikita/Work/Avtomatization/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
         P_O_TieredP.open1(dr);
         Thread.sleep(2000);
@@ -64,13 +64,7 @@ public static  WebDriver dr;
         P_O_TieredP.ClickChoiseButton();
         P_O_TieredP.DeleteAccoutn();
 
-
-
-
    }
-
-
-
 }
 
 

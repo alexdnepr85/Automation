@@ -20,7 +20,7 @@ public class P_O_TieredP {
 
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://pdffiller.com/en/login.htm");}
+        dr.get("https://www.pdffiller.com/en/login.htm");}
 
     //https://root:letmein@dev28.pdffiller.com/en/login.htm
 
@@ -160,7 +160,8 @@ public class P_O_TieredP {
             dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
             System.out.println("Delete by Version 1 ");
             dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
-            checkAlert();}
+            checkAlert();
+          System.out.println("Account Delete");}
 
 
 
@@ -170,14 +171,16 @@ public class P_O_TieredP {
                 dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
                 System.out.println("Delete by Version 2 ");
             dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
-            checkAlert();}}
+            checkAlert();
+          System.out.println("Account Delete");}}
 
 
         else {
         dr.findElement(By.xpath(".//a [text()='My Account']")).click();
         dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
         dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
-        checkAlert();}}
+        checkAlert();
+            System.out.println("Account Delete ");}}
 
 
 
