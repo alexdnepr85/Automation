@@ -20,7 +20,7 @@ public class P_O_TieredP {
 
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://www.pdffiller.com/en/login.htm");}
+        dr.get("https://root:letmein@dev28.pdffiller.com/en/login.htm");}
 
     //https://root:letmein@dev28.pdffiller.com/en/login.htm
 
@@ -176,6 +176,7 @@ public class P_O_TieredP {
 
 
         else {
+            Thread.sleep(2000);
         dr.findElement(By.xpath(".//a [text()='My Account']")).click();
         dr.findElement(By.xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]")).click();
         dr.findElement(By.xpath(".//div [@class='p1'] /a")).click();
@@ -220,9 +221,12 @@ public class P_O_TieredP {
         dr.findElement(By.xpath("//td/select   [@ id ='card_countries']/option [@value= 'US' ]")).click();
         dr.findElement(By.xpath("//td/button [@id = 'payment_button_new']")).click();
 
-        if (dr.getCurrentUrl().contains("#payment_cc")) {
+        if (dr.getCurrentUrl().contains("payment.htm")) {
 
             System.out.println("Payment not successful");
+        }
+        if (dr.getCurrentUrl().contains("en/payment/success/cc/")){
+            System.out.println("Payment successful");
         }
 
     }
