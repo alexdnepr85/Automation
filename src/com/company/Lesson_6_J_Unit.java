@@ -1,6 +1,6 @@
 package com.company;
 
-import org.junit.After;
+import com.company.PdfFiller.PageObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,10 +8,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 
 
 /**

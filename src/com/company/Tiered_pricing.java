@@ -1,20 +1,16 @@
 package com.company;
 
+import com.company.PdfFiller.P_O_TieredP;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by Никита on 25/05/15.
@@ -40,31 +36,47 @@ public static  WebDriver dr;
         P_O_TieredP.close();
     }
 
+public String Service = "//div /a[@class = 'h-nav__link '] [@href='/en/services.htm']";
+    public String SubscribeOnServices ="/html[@class=' googleChrome']" +
+            "/body/div[@id='body-content-wrapper']/div[@class='wrap-inner']/div[@id='tiered-header']" +
+            "/div[@id='tiered-top']/div[@id='block-plan-center']/div[7]/" +
+            "a[@class='laundry-table-item__button button-h redirect-button']" ;
+
+    public String PaymentButton = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
+
+    public static String url1 = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
+    public static  String url2 = "//div //li  [@id= 'personal']//a [text()= 'Select Plan!'] ";
+    public static  String url3 = "//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]";
+    public static String ChoiseButton = "//div [@id ='payment_button']/a[@class= 'button-h']";
+    public static String ChoiseButton1 ="//div [@id ='payment_button']/a[@class= 'button-h']";
+    public static String B =  "//div [@id ='payment_button']/a[@class= 'button-h']";
+    public static String V = "//div /span[@class = 'text text-to-hide']";
 
 
 
 
-    @Test  // Регистрация нового юзера.
+
+
+
+    @Test  // Reg,Pay,Delete
 
     public   void  Test1 () throws InterruptedException, AWTException {
         Thread.sleep(1000);
-        P_O_TieredP.ClickRegister();
-        P_O_TieredP.SendEmailPass();
-        Thread.sleep(1000);
-        P_O_TieredP.ErrorEmail();
-        P_O_TieredP.WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form");
-        P_O_TieredP.ClickServices();
-        P_O_TieredP.CheckTextServices();
-        P_O_TieredP.ClickSubscribeOnServices();
-        P_O_TieredP.WaitButton("//li [@id ='professional']//div [@class='list-plan-item__button list-plan-item__button_bottom annual active']//a[text()]",
-                "Button on payment page");
-        P_O_TieredP.GetButtonText();
-        P_O_TieredP.Payment();
-        P_O_TieredP.WaitButton("//div [@id ='payment_button']/a[@class= 'button-h']", "Continue go to ...");
-        P_O_TieredP.ClickChoiseButton();
+        P_O_TieredP.Registration();
+        P_O_TieredP.ClickButton_xpath(Service);
+        P_O_TieredP.CheckText("Save 66% off regular price!",V);
+        P_O_TieredP.ClickButton_xpath(SubscribeOnServices);
+        P_O_TieredP.WaitButton(PaymentButton,"Button on payment page");
+        P_O_TieredP.Paymen_for_Dev();
+        P_O_TieredP.WaitButton(B, "Continue go to ...");
+        P_O_TieredP.If_Click_Button(ChoiseButton1,ChoiseButton);
         P_O_TieredP.DeleteAccoutn();
-
    }
+
+
+
+
+
 }
 
 
