@@ -1,10 +1,14 @@
 package com.company.PdfFiller;
 
 import com.thoughtworks.selenium.webdriven.commands.GetText;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Никита on 25/05/15.
@@ -13,20 +17,28 @@ public class P_O_TieredP {
 
     public  static WebDriver dr ;
 
-    public  static  void  open1 (WebDriver dr) {
-
-
-
-
+    public  static  void  OpenFirst (WebDriver dr, String url) {
 
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://pdffiller.com");}
+        dr.get(url);}
+
+    public  static  void  OpenUrl ( String url) {
+
+        dr.get(url);}
 
 
-    //https://root:letmein@dev28.pdffiller.com/en/login.htm
+    //https://root:letmein@dev28.pdffiller.com/en/login.htm    "https://pdffiller.com"
 
 
+
+public  static void Screenshot () throws IOException {
+
+    File screenshot = ((TakesScreenshot) dr).getScreenshotAs(OutputType.FILE);
+    String path = "C:\\Nikita\\Work\\Avtomatization\\Screens\\snap" + screenshot.getName() ; //
+    FileUtils.copyFile(screenshot, new File(path),true);
+
+}
 
 
 
@@ -65,9 +77,6 @@ public class P_O_TieredP {
     public static void SendKeys (String xpath, String text) { // нажатие Register
         dr.findElement(By.xpath(xpath)).sendKeys(text);
     }
-
-
-
 
 
     public static boolean Displayed_any_ByXpath (String xpath){  // отображение элемента на стр
@@ -115,12 +124,18 @@ public class P_O_TieredP {
             return false;}
     }
 
-            //!dr.getCurrentUrl().contains("forms.htm")    взять ссылку сравнить с частью
-            //    "//div [@class = 'login-offset2']/a "   Genera
+
+    public static void WaitLink (String url) throws InterruptedException {
+
+        while (!dr.getCurrentUrl().contains(url)){
+            Thread.sleep(1000);
+        }
+
+    }
 
 
 
-    public static boolean WaitButton (String xpath,String p){ //   для ожидания элемента на странице по xpath
+   public static boolean WaitButton (String xpath,String p){ //   для ожидания элемента на странице по xpath
 
         try{
             new WebDriverWait(dr,10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));

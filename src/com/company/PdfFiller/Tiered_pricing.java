@@ -26,7 +26,7 @@ public static  WebDriver dr;
 
         System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
-        P_O_TieredP.open1(dr);
+        P_O_TieredP.OpenFirst(dr, "https://pdffiller.com");
         Thread.sleep(2000);
     }
    @After
