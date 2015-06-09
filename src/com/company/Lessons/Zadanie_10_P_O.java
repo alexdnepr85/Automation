@@ -1,15 +1,11 @@
-package com.company;
+package com.company.Lessons;
 
-import com.thoughtworks.selenium.webdriven.commands.GetText;
 import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.nio.charset.Charset;
-import java.util.List;
 
 /**
  * Created by Никита on 11/05/15.

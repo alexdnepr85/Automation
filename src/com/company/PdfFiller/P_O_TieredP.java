@@ -15,11 +15,22 @@ public class P_O_TieredP {
 
     public  static  void  open1 (WebDriver dr) {
 
+
+
+
+
         P_O_TieredP.dr = dr;
         dr.manage().window().maximize();
-        dr.get("https://root:letmein@dev28.pdffiller.com/en/login.htm");}
+        dr.get("https://pdffiller.com");}
+
 
     //https://root:letmein@dev28.pdffiller.com/en/login.htm
+
+
+
+
+
+
 
     public  static  void  close () {
         dr.close();
@@ -27,11 +38,19 @@ public class P_O_TieredP {
 
 
     public static void  Registration () throws InterruptedException {
+        if (Displayed_any_ByXpath("//div [@class = 'login-offset2']/a")){
         ClickButton_xpath("//div//a[@class= 'btn-gray btns1']"); // register button
         SendEmailPass();
         Thread.sleep(1000);
         ErrorEmail();
         WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form"); // Ожидание Add New Form button
+    }
+    else {
+            SendEmailPass();
+            Thread.sleep(1000);
+            ErrorEmail();
+            WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form");
+        }
     }
 
     public static void ClickButton_id (String id) { // нажатие Register

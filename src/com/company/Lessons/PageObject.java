@@ -1,4 +1,4 @@
-package com.company.PdfFiller;
+package com.company.Lessons;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

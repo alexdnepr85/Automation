@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Lessons;
 
 /**
  * Created by Никита on 30/03/15.

@@ -1,6 +1,5 @@
-package com.company;
+package com.company.Lessons;
 
-import com.company.PdfFiller.PageObject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

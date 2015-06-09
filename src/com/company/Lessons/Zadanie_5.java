@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Lessons;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

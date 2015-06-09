@@ -1,12 +1,10 @@
-package com.company;
+package com.company.PdfFiller;
 
-import com.company.PdfFiller.P_O_TieredP;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
