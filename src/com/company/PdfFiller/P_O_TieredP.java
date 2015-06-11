@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class P_O_TieredP {
 public  static void Screenshot () throws IOException {
 
     File screenshot = ((TakesScreenshot) dr).getScreenshotAs(OutputType.FILE);
-    String path = "C:\\Nikita\\Work\\Avtomatization\\Screens\\snap" + screenshot.getName() ; //
+    String path = "C:\\Nikita\\Work\\Avtomatization\\Screens\\snap"+ screenshot.getName() ; //
     FileUtils.copyFile(screenshot, new File(path),true);
 
 }
@@ -133,6 +134,14 @@ public  static void Screenshot () throws IOException {
 
     }
 
+    public static void GetParametr () {
+        String url = dr.getCurrentUrl();
+        String parametr = "?force_done=true";
+        String url_parametr =  url + parametr;
+        dr.get(url_parametr);
+
+    }
+
 
 
    public static boolean WaitButton (String xpath,String p){ //   для ожидания элемента на странице по xpath
@@ -191,7 +200,7 @@ public  static void Screenshot () throws IOException {
             ClickButton_xpath("//div [@class = 'new-btn btn--light-gray cancel-button']");
             ClickButton_xpath(".//a [text()='My Account']");
             ClickButton_xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]");
-            ClickButton_xpath(".//div [@class='p1'] /a");
+          ClickButton_xpath(".//div [@class='p1'] /a");
             checkAlert();
           System.out.println("Account Delete");}
 
@@ -261,6 +270,7 @@ public  static void Screenshot () throws IOException {
         }
 
 
-    }
+
+}
 
 
