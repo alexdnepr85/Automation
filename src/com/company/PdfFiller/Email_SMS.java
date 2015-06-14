@@ -33,10 +33,8 @@ public class Email_SMS {
 
         System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
+        P_O_TieredP.OpenFirst(dr, "https://root:letmein@dev2.pdffiller.com");
 
-
-        P_O_TieredP.OpenFirst(dr, "https://root:letmein@dev2.pdffiller.com ");
-        Thread.sleep(2000);
 
     }
 
@@ -64,6 +62,13 @@ public class Email_SMS {
     public static String AccountInformation = ".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]";
     public static String SendWithEmailSMS = "//div [@class='send-preferences radio-list']/label[text()='Send with Email/SMS']";
     public static String SaveMyAccoun = "//tr/td //a [@id = 'btn_saveSendPreferences']";
+    public static String MyForms = "//div [@id = 'body-content-wrapper']//a[text()= 'My Forms']";
+    public  static String  EmailSms_MyForms = "//div [@class='sngl-btn icon_mail']/div";
+    public static String  FieldEmailTo = "//div [@class='export__form-control__container']/input[@name='email_to']";
+    public static String SendTo = "//div [@class='export-header__btn-container'] //span [text()='Send Email']";
+    public static String dev28 = "https://root:letmein@dev28.pdffiller.com/en/login.htm";
+    public static String GoToMyForms_popup = "//div//a [@href='/en/forms.htm?target=outbox_email']";
+    public static String checkMark = "//td[@class='brd select contein_label']/div /input[@formid='100109021'] ";
 
 
 
@@ -84,20 +89,39 @@ public class Email_SMS {
             P_O_TieredP.ClickButton_xpath(FillOnline2);
         }
         P_O_TieredP.WaitLink(LinkEditorWait); // Ждать ссылку
-        P_O_TieredP.GetParametr(); // Добавить параметр и передать
+        Thread.sleep(5000);
         P_O_TieredP.Screenshot();
+        P_O_TieredP.GetParametr(); // Добавить параметр и передать
         P_O_TieredP.WaitLink(LinkChoiceWait); //Ждать ссылку Choise
         Thread.sleep(3000);
         P_O_TieredP.Screenshot(); // Скриншот в  папке | C:\Nikita\Work\Avtomatization\Screens
-        P_O_TieredP.ClickButton_xpath(EmailSmsButton);
-        P_O_TieredP.OpenUrl(LoginPage);
-        P_O_TieredP.Registration();
-        P_O_TieredP.ClickButton_xpath(MyAccount);
-        P_O_TieredP.WaitButton(AccountInformation, "AccountInformation");
+        P_O_TieredP.ClickButton_xpath(EmailSmsButton); //ажать на Choise
+
+        P_O_TieredP.OpenUrl(dev28);
+       // P_O_TieredP.checkAlert();  // переключение на окно регистрации
+
+        P_O_TieredP.Registration();  // регистрация
+        P_O_TieredP.OpenUrl("https://dev28.pdffiller.com/en/payment");  // open payment page
+
+        P_O_TieredP.Paymen_for_Dev();//оплата
+        P_O_TieredP.ClickButton_xpath(MyAccount); //Нажатие на Мой аккаунт
+        P_O_TieredP.WaitButton(AccountInformation, "AccountInformation"); // Ждать
         P_O_TieredP.ClickButton_xpath(AccountInformation);
         Thread.sleep(3000);
-        P_O_TieredP.ClickButton_xpath(SendWithEmailSMS);
-        P_O_TieredP.ClickButton_xpath(SaveMyAccoun);
+        P_O_TieredP.ClickButton_xpath(SendWithEmailSMS); // переключение с pMail на Email
+        P_O_TieredP.ClickButton_xpath(SaveMyAccoun); // press Save
+        P_O_TieredP.ClickButton_xpath(MyForms);  // press My Forms
+        Thread.sleep(5000);
+        P_O_TieredP.ClickButton_xpath(checkMark); // выбираем форму
+        P_O_TieredP.ClickButton_xpath(EmailSms_MyForms);    // press Email/SMS
+        Thread.sleep(10000);
+        P_O_TieredP.SendKeys(FieldEmailTo, "ageevnikitatest@gmail.com");  // Заполнение поля имейл получателя
+        P_O_TieredP.Screenshot();  // скриншот
+        P_O_TieredP.ClickButton_xpath(SendTo); // нажать на отправку
+        Thread.sleep(15000);
+        P_O_TieredP.checkAlert();
+        P_O_TieredP.ClickButton_xpath(GoToMyForms_popup);
+
         P_O_TieredP.DeleteAccoutn();
 
 
