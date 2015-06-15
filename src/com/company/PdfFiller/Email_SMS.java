@@ -96,13 +96,8 @@ public class Email_SMS {
         Thread.sleep(3000);
         P_O_TieredP.Screenshot(); // Скриншот в  папке | C:\Nikita\Work\Avtomatization\Screens
         P_O_TieredP.ClickButton_xpath(EmailSmsButton); //ажать на Choise
-
-        P_O_TieredP.OpenUrl(dev28);
-       // P_O_TieredP.checkAlert();  // переключение на окно регистрации
-
+        P_O_TieredP.checkAlert();  // переключение на окно регистрации
         P_O_TieredP.Registration();  // регистрация
-        P_O_TieredP.OpenUrl("https://dev28.pdffiller.com/en/payment");  // open payment page
-
         P_O_TieredP.Paymen_for_Dev();//оплата
         P_O_TieredP.ClickButton_xpath(MyAccount); //Нажатие на Мой аккаунт
         P_O_TieredP.WaitButton(AccountInformation, "AccountInformation"); // Ждать
@@ -112,7 +107,7 @@ public class Email_SMS {
         P_O_TieredP.ClickButton_xpath(SaveMyAccoun); // press Save
         P_O_TieredP.ClickButton_xpath(MyForms);  // press My Forms
         Thread.sleep(5000);
-        P_O_TieredP.ClickButton_xpath(checkMark); // выбираем форму
+       //  P_O_TieredP.ClickButton_xpath(checkMark); // выбираем форму
         P_O_TieredP.ClickButton_xpath(EmailSms_MyForms);    // press Email/SMS
         Thread.sleep(10000);
         P_O_TieredP.SendKeys(FieldEmailTo, "ageevnikitatest@gmail.com");  // Заполнение поля имейл получателя
