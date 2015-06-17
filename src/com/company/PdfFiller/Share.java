@@ -78,29 +78,11 @@ public class Share {
 
 
 
-
-
-
     @Test
 
 
     public   void  Test1 () throws InterruptedException, IOException {
 
-
-
-
-       /* P_O_TieredP.OpenUrl(urlLogin); //открыть стр логин
-        P_O_TieredP.Registration_Recipient(); //регистрация получателя
-        P_O_TieredP.ClickButton_xpath(MyAccount);
-        P_O_TieredP.ClickButton_xpath(AccountInformation);
-        Thread.sleep(3000);
-        String  Email_R = P_O_TieredP.Get_Text(EmailRecipient);
-        P_O_TieredP.ClickButton_id("user_logo_thumb_header");
-        P_O_TieredP.ClickButton_xpath(LogOut);
-        Thread.sleep(2000);
-        P_O_TieredP.OpenUrl(urlHomePage);*/
-        GmailClient.GetEmail();
-        if (true) return;
 
 
         P_O_TieredP.ClickButton_xpath(SearchDocument); // Нажать поиск на аплоадере
@@ -148,13 +130,8 @@ public class Share {
         P_O_TieredP.ClickButton_xpath(GoToMyForms);
         P_O_TieredP.WaitLink("forms.htm");
         P_O_TieredP.DeleteAccoutn();
-
-        P_O_TieredP.LoginGoogle();
-        P_O_TieredP.WaitLink("mail/help");
-        Thread.sleep(5000);
-        P_O_TieredP.ClickButton_xpath(EmailGoogle);   // !!!!
-        Thread.sleep(2000);
-        P_O_TieredP.ClickButton_xpath(LinkInLetter);
+        Thread.sleep(3000);
+        GmailClient.GetEmail();
         P_O_TieredP.WaitLink("password/temporary");
         Thread.sleep(3000);
         P_O_TieredP.SendKeys(NewPassw, "1111");
@@ -168,42 +145,6 @@ public class Share {
         Thread.sleep(3000);
         P_O_TieredP.ClickButton_xpath(MyAccount);
         P_O_TieredP.DeleteAccoutn();
-
-
-
-
-
-
-
-        /*
-        P_O_TieredP.ClickButton_id("user_logo_thumb_header");
-        P_O_TieredP.ClickButton_xpath(LogOut);
-        P_O_TieredP.WaitLink("logout");
-        Thread.sleep(3000);
-        P_O_TieredP.SendKeys(EmailOnLogin,Email_R);
-        P_O_TieredP.SendKeys(PasswOnLogin,"1111");
-        P_O_TieredP.ClickButton_id("login_btn_site");
-        P_O_TieredP.WaitButton(AddNewForms, "Add New Form");
-        P_O_TieredP.ClickButton_xpath(FolderSharedWithMe);
-        P_O_TieredP.CheckText("1",SharedNumber);
-        P_O_TieredP.DeleteAccoutn();
-        */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

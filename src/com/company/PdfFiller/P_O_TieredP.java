@@ -141,7 +141,7 @@ public  static void Screenshot () throws IOException {
 
     public static  void  SendEmailPass () throws InterruptedException {  // передача мыла и пароля
 
-        int k = 97;
+        int k = 98;
         SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTest" + k + "@gmail.com" );
         SendKeys("//div//td/input[@class = 'placeholders old_vers2 input grad-input']", "1111");
         ClickButton_id("register_btn_site");
@@ -150,7 +150,7 @@ public  static void Screenshot () throws IOException {
 
     public  static void  ErrorEmail() throws InterruptedException { // подбор имейла , если не подошел . цикл
 
-        int  k= 98;
+        int  k= 99;
         while (Displayed_any_ByXpath( "//div [@class = 'login-offset2']/a")) {
             ClickButton_xpath("//div[@class= 'log_reg']");
             SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTest" + k + "@gmail.com" );
