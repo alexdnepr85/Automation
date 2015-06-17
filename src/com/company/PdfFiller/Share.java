@@ -1,5 +1,6 @@
 package com.company.PdfFiller;
 
+import com.thoughtworks.selenium.webdriven.commands.Open;
 import org.apache.commons.lang3.text.StrTokenizer;
 import org.junit.After;
 import org.junit.Before;
@@ -80,12 +81,13 @@ public class Share {
 
 
 
-
-
     @Test
 
 
     public   void  Test1 () throws InterruptedException, IOException {
+
+
+
 
        /* P_O_TieredP.OpenUrl(urlLogin); //открыть стр логин
         P_O_TieredP.Registration_Recipient(); //регистрация получателя
@@ -97,6 +99,8 @@ public class Share {
         P_O_TieredP.ClickButton_xpath(LogOut);
         Thread.sleep(2000);
         P_O_TieredP.OpenUrl(urlHomePage);*/
+        GmailClient.GetEmail();
+        if (true) return;
 
 
         P_O_TieredP.ClickButton_xpath(SearchDocument); // Нажать поиск на аплоадере
@@ -144,6 +148,7 @@ public class Share {
         P_O_TieredP.ClickButton_xpath(GoToMyForms);
         P_O_TieredP.WaitLink("forms.htm");
         P_O_TieredP.DeleteAccoutn();
+
         P_O_TieredP.LoginGoogle();
         P_O_TieredP.WaitLink("mail/help");
         Thread.sleep(5000);
