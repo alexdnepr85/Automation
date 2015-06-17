@@ -67,6 +67,7 @@ public class Share {
     public static String NewPassw = "//div[@class='form-group']/input[@id='password_reset']";
     public static String ConfirmNewPass = "//div[@class='form-group']/input[@id='confirm_reset']";
     public static String Done = "//div[@class='account-confirm-form']//button [@class='btn btn--orange']";
+    public static String G = "";
 
 
 
@@ -118,17 +119,21 @@ public class Share {
         P_O_TieredP.WaitButton(Share_MyForms, "Share");
         P_O_TieredP.ClickButton_xpath(Share_MyForms); // Press Share
         P_O_TieredP.WaitLink("en/share/"); // wait Share link
+        Thread.sleep(4000);
         P_O_TieredP.Screenshot();
         Thread.sleep(2000);
         P_O_TieredP.SendKeys(RecipientEmail, Email_R + "Recipient@gmail.com");
         Thread.sleep(2000);
         P_O_TieredP.ClearField(SubjectField);
-        P_O_TieredP.SendKeys(SubjectField, "Avt Test Recipient");
+        P_O_TieredP.SendKeys(SubjectField, Email_R);
+        G = Email_R;
+        Thread.sleep(4000);
         P_O_TieredP.Screenshot();
         P_O_TieredP.ClickButton_xpath(ShareButton);
         P_O_TieredP.checkAlert();
         P_O_TieredP.ClickButton_xpath(GoToMyForms);
         P_O_TieredP.WaitLink("forms.htm");
+        Thread.sleep(3000);
         P_O_TieredP.DeleteAccoutn();
         Thread.sleep(3000);
         GmailClient.GetEmail();

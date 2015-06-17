@@ -58,10 +58,11 @@ public class GmailClient{
             Store store = session.getStore();
             store.connect("imap.gmail.com", EMAIL, PASSWORD);
             Folder inbox = store.getFolder("INBOX");
+
             inbox.open(Folder.READ_ONLY);
             for (int i = 1 ; i<inbox.getMessageCount();i++){
                 Message msg = inbox.getMessage(i);
-                if (msg.getSubject().equals("Avt Test Recipient")){
+                if (msg.getSubject().equals(Share.G)){
                     String g = (String) msg.getContent();
                     String url = g.substring(g.indexOf("click <a href=\"") + "click <a href=\"".length(), g.indexOf("\">here</a>.</p>"));
                     P_O_TieredP.OpenUrl(url);
