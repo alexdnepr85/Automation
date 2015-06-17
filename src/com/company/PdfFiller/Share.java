@@ -1,5 +1,6 @@
 package com.company.PdfFiller;
 
+import org.apache.commons.lang3.text.StrTokenizer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,12 +44,30 @@ public class Share {
     public static String EmailSmsButton = "//a/span[text()='Email / SMS'] ";
     public static String MyForms = "//div [@id = 'body-content-wrapper']//a[text()= 'My Forms']";
     public static String Share_MyForms = "//div [@class='sngl-btn icon_share']/div";
-    public static String AddAnotherRecipient = "// section [@class='all-recipients']/button";
+    public static String AddAnotherRecipient = "// section [@class='all-recipients']/button[@class='btn-add-recipient']";
     public static String RecipientEmail = "//div [@class ='all-recipient__item__inner__left'] //input [@class='form-control ng-scope ng-isolate-scope ng-pristine ng-valid ng-touched']";
     public static String Email = "ageevnikitatest@gmail.com";
     public static String ShareButton = "//button [@class='btn-share pull-right']";
     public static String GoToMyForms = "//div[@class='modal-btns ng-scope']/a [@href='/en/forms.htm?target=outbox_share']";
     public static String LogOut = "//div[@class='h-ac__dropdown']/a [@href='/en/logout.htm']";
+    public static String urlLogin = "https://root:letmein@dev2.pdffiller.com/en/login.htm";
+    public static String urlHomePage = "https://root:letmein@dev2.pdffiller.com";
+    public static String FolderSharedWithMe = "//div [@class='folders-list system_folders no_drop flist_active'] //a[@href='/en/forms.htm?target=shared']";
+    public static String SharedNumber = "//div [@class='folders-list system_folders no_drop flist_active'] //a[@href='/en/forms.htm?target=shared'] /span [@class='count_folder']";
+    public static String  MyAccount = ".//a [text()='My Account']";
+    public static String AccountInformation = ".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]";
+    public static String EmailRecipient = "//div [@class='p1']//span [@id='username']";
+    public static String EmailOnLogin = "//td [@class='talign_l valign_t wd_300']// input [@name='username']";
+    public static String PasswOnLogin = "//td [@class='talign_l valign_t wd_300']// input [@name='password']";
+    public static String AddNewForms = "div[@class = 'add_new_forms_text']";
+    public static String EmailGoogle = ".//span [@id = ':3y'] [text()='Avt Test Recipient'] ";
+    public static String SubjectField = "//div [@class='form-group small subject']/input[@id='share-subject']";
+    public static String LinkInLetter = "//div[@style='padding-top:10px']/p[text()='To access and edit this document, click ']/a[@href]";
+    public static String NewPassw = "//div[@class='form-group']/input[@id='password_reset']";
+    public static String ConfirmNewPass = "//div[@class='form-group']/input[@id='confirm_reset']";
+    public static String Done = "//div[@class='account-confirm-form']//button [@class='btn btn--orange']";
+
+
 
 
 
@@ -64,7 +83,22 @@ public class Share {
 
 
     @Test
+
+
     public   void  Test1 () throws InterruptedException, IOException {
+
+       /* P_O_TieredP.OpenUrl(urlLogin); //открыть стр логин
+        P_O_TieredP.Registration_Recipient(); //регистрация получателя
+        P_O_TieredP.ClickButton_xpath(MyAccount);
+        P_O_TieredP.ClickButton_xpath(AccountInformation);
+        Thread.sleep(3000);
+        String  Email_R = P_O_TieredP.Get_Text(EmailRecipient);
+        P_O_TieredP.ClickButton_id("user_logo_thumb_header");
+        P_O_TieredP.ClickButton_xpath(LogOut);
+        Thread.sleep(2000);
+        P_O_TieredP.OpenUrl(urlHomePage);*/
+
+
         P_O_TieredP.ClickButton_xpath(SearchDocument); // Нажать поиск на аплоадере
         Thread.sleep(2000);
         P_O_TieredP.SendKeys(Field4Search,"W 9 "); // Вводим в поле "W 9"
@@ -88,19 +122,71 @@ public class Share {
         P_O_TieredP.ClickButton_id("share_link"); //Нажать на Choise
         P_O_TieredP.checkAlert();  // переключение на окно регистрации
         P_O_TieredP.Registration();  // регистрация
-        P_O_TieredP.WaitLink("en/share/");
+        Thread.sleep(3000);
+        P_O_TieredP.ClickButton_xpath(MyAccount);    //вытягиваем аккаунт который зарегистрировали
+        P_O_TieredP.ClickButton_xpath(AccountInformation);  //вытягиваем аккаунт который зарегистрировали
+        Thread.sleep(3000);
+        String  T = P_O_TieredP.Get_Text(EmailRecipient);  //вытягиваем аккаунт который зарегистрировали
+        String  Email_R = T.substring(0, T.length()-10);
+        P_O_TieredP.ClickButton_xpath(MyForms);  // переход на МYforms
+        P_O_TieredP.WaitButton(Share_MyForms, "Share");
+        P_O_TieredP.ClickButton_xpath(Share_MyForms); // Press Share
+        P_O_TieredP.WaitLink("en/share/"); // wait Share link
         P_O_TieredP.Screenshot();
-        Thread.sleep(5000);
-        P_O_TieredP.ClickButton_xpath(AddAnotherRecipient);
-        P_O_TieredP.SendKeys(RecipientEmail, Email);
+        Thread.sleep(2000);
+        P_O_TieredP.SendKeys(RecipientEmail, Email_R + "Recipient@gmail.com");
+        Thread.sleep(2000);
+        P_O_TieredP.ClearField(SubjectField);
+        P_O_TieredP.SendKeys(SubjectField, "Avt Test Recipient");
         P_O_TieredP.Screenshot();
         P_O_TieredP.ClickButton_xpath(ShareButton);
         P_O_TieredP.checkAlert();
         P_O_TieredP.ClickButton_xpath(GoToMyForms);
         P_O_TieredP.WaitLink("forms.htm");
+        P_O_TieredP.DeleteAccoutn();
+        P_O_TieredP.LoginGoogle();
+        P_O_TieredP.WaitLink("mail/help");
+        Thread.sleep(5000);
+        P_O_TieredP.ClickButton_xpath(EmailGoogle);   // !!!!
         Thread.sleep(2000);
+        P_O_TieredP.ClickButton_xpath(LinkInLetter);
+        P_O_TieredP.WaitLink("password/temporary");
+        Thread.sleep(3000);
+        P_O_TieredP.SendKeys(NewPassw, "1111");
+        P_O_TieredP.SendKeys(ConfirmNewPass, "1111");
+        P_O_TieredP.ClickButton_xpath(Done);
+        P_O_TieredP.WaitLink("en/project/");
+        Thread.sleep(3000);
+        P_O_TieredP.Screenshot();
+        P_O_TieredP.GetParametr();
+        P_O_TieredP.WaitLink("export/choice");
+        Thread.sleep(3000);
+        P_O_TieredP.ClickButton_xpath(MyAccount);
+        P_O_TieredP.DeleteAccoutn();
+
+
+
+
+
+
+
+        /*
         P_O_TieredP.ClickButton_id("user_logo_thumb_header");
         P_O_TieredP.ClickButton_xpath(LogOut);
+        P_O_TieredP.WaitLink("logout");
+        Thread.sleep(3000);
+        P_O_TieredP.SendKeys(EmailOnLogin,Email_R);
+        P_O_TieredP.SendKeys(PasswOnLogin,"1111");
+        P_O_TieredP.ClickButton_id("login_btn_site");
+        P_O_TieredP.WaitButton(AddNewForms, "Add New Form");
+        P_O_TieredP.ClickButton_xpath(FolderSharedWithMe);
+        P_O_TieredP.CheckText("1",SharedNumber);
+        P_O_TieredP.DeleteAccoutn();
+        */
+
+
+
+
 
 
 

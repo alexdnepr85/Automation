@@ -35,6 +35,7 @@ public static  WebDriver dr;
     }
 
 public String Service = "//div /a[@class = 'h-nav__link '] [@href='/en/services.htm']";
+
     public String SubscribeOnServices ="/html[@class=' googleChrome']" +
             "/body/div[@id='body-content-wrapper']/div[@class='wrap-inner']/div[@id='tiered-header']" +
             "/div[@id='tiered-top']/div[@id='block-plan-center']/div[7]/" +

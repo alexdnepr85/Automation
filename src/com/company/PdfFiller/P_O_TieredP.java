@@ -39,7 +39,50 @@ public  static void Screenshot () throws IOException {
     String path = "C:\\Nikita\\Work\\Avtomatization\\Screens\\snap"+ screenshot.getName() ; //
     FileUtils.copyFile(screenshot, new File(path),true);
 
+
+
+
 }
+
+
+    public static void  Registration_Recipient () throws InterruptedException {
+        if (Displayed_any_ByXpath("//div [@class = 'login-offset2']/a")){
+            ClickButton_xpath("//div//a[@class= 'btn-gray btns1']"); // register button
+            SendEmailPass_Recipient();
+            Thread.sleep(1000);
+            ErrorEmail_Recipient();
+            WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form"); // Ожидание Add New Form button
+        }
+        else {
+            SendEmailPass();
+            Thread.sleep(1000);
+            ErrorEmail();
+            WaitButton("//div[@class = 'add_new_forms_text']", "Add New Form");
+        }
+    }
+
+    public static  void  SendEmailPass_Recipient () throws InterruptedException {  // передача мыла и пароля
+
+        int k = 1;
+        SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTestRecipient" + k + "@gmail.com" );
+        SendKeys("//div//td/input[@class = 'placeholders old_vers2 input grad-input']", "1111");
+        ClickButton_id("register_btn_site");
+
+    }
+
+    public  static void  ErrorEmail_Recipient() throws InterruptedException { // подбор имейла , если не подошел . цикл
+
+        int  k= 2;
+        while (Displayed_any_ByXpath( "//div [@class = 'login-offset2']/a")) {
+            ClickButton_xpath("//div[@class= 'log_reg']");
+            SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTestRecipient" + k + "@gmail.com" );
+            SendKeys("//div//td/input[@class = 'placeholders old_vers2 input grad-input']","1111" );
+            ClickButton_id("register_btn_site");
+            k = k+1;
+            Thread.sleep(2000);}
+
+    }
+
 
 
 
@@ -89,10 +132,16 @@ public  static void Screenshot () throws IOException {
             return false;}
     }
 
+    public static void VisiblElement (String xpath){
+        WebDriverWait wait = new WebDriverWait(dr, 10);
+        WebElement element = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+    }
+
 
     public static  void  SendEmailPass () throws InterruptedException {  // передача мыла и пароля
 
-        int k = 70;
+        int k = 97;
         SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTest" + k + "@gmail.com" );
         SendKeys("//div//td/input[@class = 'placeholders old_vers2 input grad-input']", "1111");
         ClickButton_id("register_btn_site");
@@ -101,7 +150,7 @@ public  static void Screenshot () throws IOException {
 
     public  static void  ErrorEmail() throws InterruptedException { // подбор имейла , если не подошел . цикл
 
-        int  k= 71;
+        int  k= 98;
         while (Displayed_any_ByXpath( "//div [@class = 'login-offset2']/a")) {
             ClickButton_xpath("//div[@class= 'log_reg']");
             SendKeys("//div//td/input[@class = 'placeholders input old_vers2 grad-input']","ageevnikitatest+AvtTest" + k + "@gmail.com" );
@@ -158,7 +207,10 @@ public  static void Screenshot () throws IOException {
 
 
 
-    public static String Get_Text  (String xpath ) {
+
+
+
+    public static String Get_Text (String xpath ) {
        String k =  dr.findElement(By.xpath(xpath)).getText();
         return k;
     }
@@ -190,6 +242,10 @@ public  static void Screenshot () throws IOException {
         if (!dr.getCurrentUrl().contains("#payment_cc")){
         ClickButton_xpath(".//a [text()='My Account']");
         ClickButton_xpath(".//div [@class='wrap-inner'] //div [@class='content-pad']//td[3]");
+            ClickButton_xpath(".//div [@class='p1'] /a");
+            checkAlert();
+            System.out.println("Account Delete ");
+
 
         if  (CheckButton("//a [@href='/en/account/?op=payment_options']")){
             ClickButton_xpath("//a [@href='/en/account/?op=payment_options']");
@@ -268,6 +324,25 @@ public  static void Screenshot () throws IOException {
         ClickButton_xpath(xpath1);}
 
         }
+
+    public static void  LoginGoogle () throws InterruptedException {
+        OpenUrl("https://mail.google.com/mail/u/0/#inbox");
+        ClickButton_xpath("//div [@class='maia-util']/a [@href='https://accounts.google.com/ServiceLogin?service=mail&continue=https://mail.google.com/mail/&hl=ru']");
+        WaitLink("ServiceLogin");
+        SendKeys("//div [@class='form-panel first valid']//input[@id='Email']","ageevnikitatest@gmail.com");
+        ClickButton_xpath("//div [@class='form-panel first valid']//input[@id='next']");
+        Thread.sleep(2000);
+        SendKeys("//div [@class='form-panel second']//input[@id='Passwd']","kifoR1996");
+        ClickButton_xpath("//div [@class='form-panel second']//input[@id='signIn']");
+        WaitLink("/mail/u/0/#inbox");
+
+    }
+
+    public static void ClearField (String xpath) {
+        dr.findElement(By.xpath(xpath)).clear();
+
+    }
+
 
 
 
