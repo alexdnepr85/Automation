@@ -15,6 +15,7 @@ import org.openqa.selenium.Keys;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Никита on 06/09/15.
@@ -33,6 +34,7 @@ public class Email_SMS {
 
         System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
+        dr.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         P_O_TieredP.OpenFirst(dr, "https://root:letmein@dev2.pdffiller.com");
 
 

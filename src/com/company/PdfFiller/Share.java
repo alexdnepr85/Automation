@@ -150,11 +150,5 @@ public class Share {
         Thread.sleep(3000);
         P_O_TieredP.ClickButton_xpath(MyAccount);
         P_O_TieredP.DeleteAccoutn();
-
-
-
-
     }
-
-
 }
