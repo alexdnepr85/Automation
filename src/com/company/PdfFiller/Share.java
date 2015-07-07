@@ -1,7 +1,5 @@
 package com.company.PdfFiller;
 
-import com.thoughtworks.selenium.webdriven.commands.Open;
-import org.apache.commons.lang3.text.StrTokenizer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,12 +23,12 @@ public class Share {
 
         System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
-        P_O_TieredP.OpenFirst(dr, "https://root:letmein@dev2.pdffiller.com");}
+        P_O.OpenFirst(dr, "https://root:letmein@dev2.pdffiller.com");}
 
 
     @After
     public void END(){
-        P_O_TieredP.close();}
+        P_O.close();}
 
 
 
@@ -86,69 +84,69 @@ public class Share {
 
 
 
-        P_O_TieredP.ClickButton_xpath(SearchDocument); // Нажать поиск на аплоадере
+        P_O.ClickButton_xpath(SearchDocument); // Нажать поиск на аплоадере
         Thread.sleep(2000);
-        P_O_TieredP.SendKeys(Field4Search,"W 9 "); // Вводим в поле "W 9"
-        P_O_TieredP.ClickButton_xpath(Search);  // Нажать Search
-        P_O_TieredP.WaitButton(FillOnline,"Fill Online"); //Ждем Fill Online
-        if (P_O_TieredP.CheckButton(FillOnline))    // Поиск ссыллок на форму и нажатие на них
+        P_O.SendKeys(Field4Search, "W 9 "); // Вводим в поле "W 9"
+        P_O.ClickButton_xpath(Search);  // Нажать Search
+        P_O.WaitButton(FillOnline, "Fill Online"); //Ждем Fill Online
+        if (P_O.CheckButton(FillOnline))    // Поиск ссыллок на форму и нажатие на них
         {
-            P_O_TieredP.ClickButton_xpath(FillOnline);
+            P_O.ClickButton_xpath(FillOnline);
         }
         else
         {
-            P_O_TieredP.ClickButton_xpath(FillOnline2);
+            P_O.ClickButton_xpath(FillOnline2);
         }
-        P_O_TieredP.WaitLink(LinkEditorWait); // Ждать ссылку
+        P_O.WaitLink(LinkEditorWait); // Ждать ссылку
         Thread.sleep(5000);
-        P_O_TieredP.Screenshot();
-        P_O_TieredP.GetParametr(); // Добавить параметр и передать
-        P_O_TieredP.WaitLink(LinkChoiceWait); //Ждать ссылку Choise
+        P_O.Screenshot();
+        P_O.GetParametr(); // Добавить параметр и передать
+        P_O.WaitLink(LinkChoiceWait); //Ждать ссылку Choise
         Thread.sleep(3000);
-        P_O_TieredP.Screenshot(); // Скриншот в  папке | C:\Nikita\Work\Avtomatization\Screens
-        P_O_TieredP.ClickButton_id("share_link"); //Нажать на Choise
-        P_O_TieredP.checkAlert();  // переключение на окно регистрации
-        P_O_TieredP.Registration();  // регистрация
+        P_O.Screenshot(); // Скриншот в  папке | C:\Nikita\Work\Avtomatization\Screens
+        P_O.ClickButton_id("share_link"); //Нажать на Choise
+        P_O.checkAlert();  // переключение на окно регистрации
+        P_O.Registration();  // регистрация
         Thread.sleep(3000);
-        P_O_TieredP.ClickButton_xpath(MyAccount);    //вытягиваем аккаунт который зарегистрировали
-        P_O_TieredP.ClickButton_xpath(AccountInformation);  //вытягиваем аккаунт который зарегистрировали
+        P_O.ClickButton_xpath(MyAccount);    //вытягиваем аккаунт который зарегистрировали
+        P_O.ClickButton_xpath(AccountInformation);  //вытягиваем аккаунт который зарегистрировали
         Thread.sleep(3000);
-        String  T = P_O_TieredP.Get_Text(EmailRecipient);  //вытягиваем аккаунт который зарегистрировали
+        String  T = P_O.Get_Text(EmailRecipient);  //вытягиваем аккаунт который зарегистрировали
         String  Email_R = T.substring(0, T.length()-10);
-        P_O_TieredP.ClickButton_xpath(MyForms);  // переход на МYforms
-        P_O_TieredP.WaitButton(Share_MyForms, "Share");
-        P_O_TieredP.ClickButton_xpath(Share_MyForms); // Press Share
-        P_O_TieredP.WaitLink("en/share/"); // wait Share link
+        P_O.ClickButton_xpath(MyForms);  // переход на МYforms
+        P_O.WaitButton(Share_MyForms, "Share");
+        P_O.ClickButton_xpath(Share_MyForms); // Press Share
+        P_O.WaitLink("en/share/"); // wait Share link
         Thread.sleep(4000);
-        P_O_TieredP.Screenshot();
+        P_O.Screenshot();
         Thread.sleep(2000);
-        P_O_TieredP.SendKeys(RecipientEmail, Email_R + "Recipient@gmail.com");
+        P_O.SendKeys(RecipientEmail, Email_R + "Recipient@gmail.com");
         Thread.sleep(2000);
-        P_O_TieredP.ClearField(SubjectField);
-        P_O_TieredP.SendKeys(SubjectField, Email_R);
+        P_O.ClearField(SubjectField);
+        P_O.SendKeys(SubjectField, Email_R);
         G = Email_R;
         Thread.sleep(4000);
-        P_O_TieredP.Screenshot();
-        P_O_TieredP.ClickButton_xpath(ShareButton);
-        P_O_TieredP.checkAlert();
-        P_O_TieredP.ClickButton_xpath(GoToMyForms);
-        P_O_TieredP.WaitLink("forms.htm");
+        P_O.Screenshot();
+        P_O.ClickButton_xpath(ShareButton);
+        P_O.checkAlert();
+        P_O.ClickButton_xpath(GoToMyForms);
+        P_O.WaitLink("forms.htm");
         Thread.sleep(3000);
-        P_O_TieredP.DeleteAccoutn();
+        P_O.DeleteAccoutn();
         Thread.sleep(3000);
         GmailClient.GetEmail();
-        P_O_TieredP.WaitLink("password/temporary");
+        P_O.WaitLink("password/temporary");
         Thread.sleep(3000);
-        P_O_TieredP.SendKeys(NewPassw, "1111");
-        P_O_TieredP.SendKeys(ConfirmNewPass, "1111");
-        P_O_TieredP.ClickButton_xpath(Done);
-        P_O_TieredP.WaitLink("en/project/");
+        P_O.SendKeys(NewPassw, "1111");
+        P_O.SendKeys(ConfirmNewPass, "1111");
+        P_O.ClickButton_xpath(Done);
+        P_O.WaitLink("en/project/");
         Thread.sleep(3000);
-        P_O_TieredP.Screenshot();
-        P_O_TieredP.GetParametr();
-        P_O_TieredP.WaitLink("export/choice");
+        P_O.Screenshot();
+        P_O.GetParametr();
+        P_O.WaitLink("export/choice");
         Thread.sleep(3000);
-        P_O_TieredP.ClickButton_xpath(MyAccount);
-        P_O_TieredP.DeleteAccoutn();
+        P_O.ClickButton_xpath(MyAccount);
+        P_O.DeleteAccoutn();
     }
 }

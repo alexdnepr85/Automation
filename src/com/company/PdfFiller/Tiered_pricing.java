@@ -26,12 +26,12 @@ public static  WebDriver dr;
 
         System.setProperty("webdriver.chrome.driver", Constants.ROOT_DIR_CHROME_APP);
         WebDriver dr = new ChromeDriver();
-        P_O_TieredP.OpenFirst(dr, "https://root:letmein@dev28.pdffiller.com/en/login.htm");
+        P_O.OpenFirst(dr, "https://root:letmein@dev28.pdffiller.com/en/login.htm");
         Thread.sleep(2000);
     }
    @After
     public void END(){
-        P_O_TieredP.close();
+        P_O.close();
     }
 
 public String Service = "//div /a[@class = 'h-nav__link '] [@href='/en/services.htm']";
@@ -61,15 +61,15 @@ public String Service = "//div /a[@class = 'h-nav__link '] [@href='/en/services.
 
     public   void  Test1 () throws InterruptedException, AWTException {
         Thread.sleep(1000);
-        P_O_TieredP.Registration();
-        P_O_TieredP.ClickButton_xpath(Service);
-        P_O_TieredP.CheckText("Save 66% off regular price!",V);
-        P_O_TieredP.ClickButton_xpath(SubscribeOnServices);
-        P_O_TieredP.WaitButton(PaymentButton,"Button on payment page");
-        P_O_TieredP.Paymen_for_Dev();
-        P_O_TieredP.WaitButton(B, "Continue go to ...");
-        P_O_TieredP.If_Click_Button(ChoiseButton1,ChoiseButton);
-        P_O_TieredP.DeleteAccoutn();
+        P_O.Registration();
+        P_O.ClickButton_xpath(Service);
+        P_O.CheckText("Save 66% off regular price!", V);
+        P_O.ClickButton_xpath(SubscribeOnServices);
+        P_O.WaitButton(PaymentButton, "Button on payment page");
+        P_O.Paymen_for_Dev();
+        P_O.WaitButton(B, "Continue go to ...");
+        P_O.If_Click_Button(ChoiseButton1, ChoiseButton);
+        P_O.DeleteAccoutn();
    }
 
 

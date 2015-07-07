@@ -1,8 +1,5 @@
 package com.company.PdfFiller;
 
-import com.company.PdfFiller.P_O_TieredP;
-import org.openqa.selenium.By;
-
 /**
  * Created by Никита on 04/06/15.
  */

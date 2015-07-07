@@ -1,12 +1,10 @@
 package com.company.PdfFiller;
 
-import com.thoughtworks.selenium.webdriven.commands.GetText;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.Keys;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,13 +12,13 @@ import java.io.IOException;
 /**
  * Created by Никита on 25/05/15.
  */
-public class P_O_TieredP {
+public class P_O {
 
     public  static WebDriver dr ;
 
     public  static  void  OpenFirst (WebDriver dr, String url) {
 
-        P_O_TieredP.dr = dr;
+        P_O.dr = dr;
         dr.manage().window().maximize();
         dr.get(url);}
 

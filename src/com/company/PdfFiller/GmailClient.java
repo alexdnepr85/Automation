@@ -65,7 +65,7 @@ public class GmailClient{
                 if (msg.getSubject().equals(Share.G)){
                     String g = (String) msg.getContent();
                     String url = g.substring(g.indexOf("click <a href=\"") + "click <a href=\"".length(), g.indexOf("\">here</a>.</p>"));
-                    P_O_TieredP.OpenUrl(url);
+                    P_O.OpenUrl(url);
 
 
                     break;
