@@ -1,11 +1,16 @@
 package com.company.lessonsPDFFiller;
 
+import org.openqa.selenium.WebDriver;
+
 import java.util.Scanner;
 
 /**
  * Created by Никита on 07/08/15.
  */
-public class P_O_Lessons {
+public class PoLesson {
+    public  static WebDriver dr ;
+
+
 
     public static void metodOne () {
         System.out.println("Выбран метод: int -> char");
@@ -34,4 +39,8 @@ public class P_O_Lessons {
         int count3 = (int) count2;
         System.out.println("Integer = " + count3);
 }
+
+    public static void checkResult (){
+        
+    }
 }
