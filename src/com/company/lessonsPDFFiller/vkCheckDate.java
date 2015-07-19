@@ -44,9 +44,7 @@ public class vkCheckDate {
 
     public static String Phone = "380501863551";
     public static String Password = "kifor1996";
-   // public static String ActualDate = P_O.Get_Text("(//*[@class='labeled fl_l']/a)[1]");
     public static String ExpectedDate = "21 января" ;
-   // public static String ActualYear = P_O.Get_Text("(//*[@class='labeled fl_l']/a)[2]");
     public static String ExpectedYear = "1991";
 
 
@@ -57,14 +55,12 @@ public class vkCheckDate {
           P_O.SendKeys("//div[@class='labeled']/input[@name='email']",Phone);
           P_O.SendKeys("//div[@class='labeled']/input[@name='pass']",Password);
           P_O.ClickButton_id("quick_login_button");
-          //P_O.WaitButton("//span[text()='Настройки']","Настройки");
-          //P_O.ClickButton_xpath("//li[@id='l_set']//span[text()='Настройки']");   СПРОСИТЬ ПОЧЕМУ НЕ НАХОДИ ЭЛЕМЕНТ
+
           if (P_O.Displayed_any_ByXpath("//div[@class='clear_fix ']/div[text()='День рождения:']")) {
 
-               if (ExpectedDate.equals(P_O.Get_Text("(//*[@class='labeled fl_l']/a)[1]"))){
-                  ExpectedYear.equals(P_O.Get_Text("(//*[@class='labeled fl_l']/a)[2]"));
-              }
-              else {P_O.OpenUrl("https://vk.com/edit");
+               if (!ExpectedDate.equals(P_O.Get_Text("(//*[@class='labeled fl_l']/a)[1]"))) {
+
+                   P_O.OpenUrl("https://vk.com/edit");
                    Thread.sleep(2000);
                    P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[4]");
                    P_O.ClickButton_xpath("//li[text()='21']");
@@ -72,17 +68,15 @@ public class vkCheckDate {
                    P_O.ClickButton_xpath("//li[text()='Января']");
                    P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[6]");
                    P_O.ClickButton_xpath("//li[text()='1991']");
-                   Thread.sleep(1000);
                    P_O.ClickButton_xpath("//div[@class='pedit_controls clear_fix']/button[text()='Сохранить']");
                    P_O.checkAlert();
                    P_O.OpenUrl("https://vk.com");
-                   Thread.sleep(1000);
-
-
                }
-          }
-          else {
-              {
+
+
+              if (!ExpectedYear.equals(P_O.Get_Text("(//*[@class='labeled fl_l']/a)[2]"))){
+
+
                   P_O.OpenUrl("https://vk.com/edit");
                   Thread.sleep(2000);
                   P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[4]");
@@ -96,5 +90,25 @@ public class vkCheckDate {
                   P_O.checkAlert();
                   P_O.OpenUrl("https://vk.com");
                   Thread.sleep(1000);
+
               }
-          }}}
+              }
+
+
+              else {P_O.OpenUrl("https://vk.com/edit");
+                   Thread.sleep(2000);
+                   P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[4]");
+                   P_O.ClickButton_xpath("//li[text()='21']");
+                   P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[5]");
+                   P_O.ClickButton_xpath("//li[text()='Января']");
+                   P_O.ClickButton_xpath("(//input[@class='selector_input selected'])[6]");
+                   P_O.ClickButton_xpath("//li[text()='1991']");
+                   Thread.sleep(1000);
+                   P_O.ClickButton_xpath("//div[@class='pedit_controls clear_fix']/button[text()='Сохранить']");
+                   P_O.checkAlert();
+                   P_O.OpenUrl("https://vk.com");
+                   Thread.sleep(1000);
+               }
+
+
+          }}
